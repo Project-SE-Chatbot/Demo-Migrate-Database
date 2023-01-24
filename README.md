@@ -47,9 +47,10 @@
     - Post            @POST
     
   import entities = db/data-source.ts => dataSourceOptions 
+  Edited  host, port, username, password for your setup Mysql
   
   ```bash
-     type: 'mysql',
+    type: 'mysql',
     host: '127.0.0.1',
     port: 3306,
     username:'root',
@@ -60,7 +61,6 @@
               Feedback,Free_Elective,
               Major,Place,Plan,
               Q_And_A,Register,Teacher],
-
     synchronize: true,
     // migrations: ['src/migration/**/*.ts'],
     // migrationsTableName: "custom_migration_table",
