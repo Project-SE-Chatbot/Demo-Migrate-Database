@@ -46,6 +46,25 @@
     - Profile         @POST
     - Post            @POST
     
+  import entities = db/data-source.ts => dataSourceOptions 
+  
+  ```bash
+     type: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username:'root',
+    password:'SE404_Cp',
+    database:'chat_bot_cpe',
+    entities:[User,Post,Profile,
+              Admin,Degree,Faq,
+              Feedback,Free_Elective,
+              Major,Place,Plan,
+              Q_And_A,Register,Teacher],
+
+    synchronize: true,
+    // migrations: ['src/migration/**/*.ts'],
+    // migrationsTableName: "custom_migration_table",
+  ```
 
 ## Installation
 
