@@ -29,16 +29,16 @@
 ## Ver 1.0.0
   Database Structure
     Back-end
-    - Admin           @GET
-    - Degree          @GET
-    - Faq             @GET
-    - Feedback        @GET
-    - Free_Elective   @GET
-    - Major           @GET
-    - Place           @GET
-    - Q_And_A         @GET
-    - Register        @GET
-    - Teacher         @GET    
+     *Admin           @GET
+     *Degree          @GET
+     *Faq             @GET
+     *Feedback        @GET
+     *Free_Elective   @GET
+     *Major           @GET
+     *Place           @GET
+     *Q_And_A         @GET
+     *Register        @GET
+     *Teacher         @GET    
     test
     - User            @GET @POST @PUT @DELETE @OneToOne => Profile  @OneToMany => Post
     - Profile         @POST
