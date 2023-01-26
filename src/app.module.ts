@@ -19,9 +19,7 @@ import { Q_And_A } from './typeorm/entities/back_end/Q&A';
 import { Register } from './typeorm/entities/back_end/Register';
 import { Teacher } from './typeorm/entities/back_end/Teacher';
 import { dataSourceOptions } from 'db/data-source';
-import { DegreeController } from './api/degree/degree.controller';
 import { DegreeModule } from './api/degree/degree.module';
-import { FaqController } from './api/faq/faq.controller';
 import { FaqModule } from './api/faq/faq.module';
 import { FeedBackModule } from './api/feed-back/feed-back.module';
 import { MajorModule } from './api/major/major.module';
@@ -36,7 +34,7 @@ import { AdminModule } from './api/admin/admin.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule, DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule],
-  controllers: [AppController, DegreeController, FaqController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {
