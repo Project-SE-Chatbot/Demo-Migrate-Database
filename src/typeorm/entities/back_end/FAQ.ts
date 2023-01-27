@@ -11,7 +11,7 @@ export class Faq{
     question: string;
 
     @Column()
-    anser: string;
+    answer: string;
 
     @Column()
     frequency: number;

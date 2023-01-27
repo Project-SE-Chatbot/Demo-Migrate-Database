@@ -11,7 +11,7 @@ export class Q_And_A{
     question: string;
     // ???
     @Column()
-    anser: string;
+    answer: string;
 
     
 
