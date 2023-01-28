@@ -21,20 +21,17 @@
 // };
 
 export type DegreeParam = {
-  id_degree: number;
   time: string;
   Amount: string;
   link: string;
 };
 
 export type AdminParam = {
-  id_admin: number;
   name: string;
   password: string;
 };
 
 export type FaqParam = {
-  id_faq: number;
   question: string;
   answer: string;
   frequency: number;
@@ -42,7 +39,6 @@ export type FaqParam = {
 };
 
 export type FeedbackParam = {
-  id_feedback: number;
   question: string;
   answer: string;
   score: number;
@@ -50,13 +46,11 @@ export type FeedbackParam = {
 };
 
 export type ElectiveParam = {
-  id_free_elective: number;
   name: string;
   review: string;
 };
 
 export type MajorParam = {
-  id_major: number;
   name_teacher: string;
   term: string;
   place: string;
@@ -65,30 +59,25 @@ export type MajorParam = {
 };
 
 export type PlaceParam = {
-  id_place: number;
   building: string;
   room: string;
   location: string;
 };
 
 export type PlanParam = {
-  id_plan: number;
   link: string;
 };
 
 export type Q_And_AParam = {
-  id_q_and_a: number;
   question: string;
   answer: string;
 };
 
 export type RegisterParam = {
-  id_register: number;
   degree: number;
 };
 
 export type TeacherParam = {
-  id_teacher: number;
   picture: string;
   location: string;
   address: string;
