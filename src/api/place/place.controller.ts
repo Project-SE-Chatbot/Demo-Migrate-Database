@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
-import { Body, Delete, Post, Put } from '@nestjs/common/decorators';
+import { Controller, Get, ParseIntPipe } from '@nestjs/common';
+import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
 import { PlaceDTO } from './DTO/place.dto';
+import { updatePlaceDTO } from './DTO/updatePlace.dto';
 import { PlaceService } from './place.service';
 
 @Controller('place')
@@ -17,13 +18,18 @@ export class PlaceController {
         this.placeService.createPlace(createPlace)
     }
 
-    @Put()
-    editPlace(){
-
+    @Put(':id')
+    editPlace(@Param('id', ParseIntPipe) id: number, @Body() updatePlace: updatePlaceDTO){
+        this.placeService.updatePlace(id, updatePlace)
     }
 
-    @Delete()
-    deletePlaceByID(){
-        
+    @Delete(':id')
+    deletePlaceByID(@Param('id', ParseIntPipe) id: number){
+        this.placeService.deletePlace(id)
+    }
+
+    @Get(':id')
+    findPlaceByID(@Param('id', ParseIntPipe) id: number){
+        this.placeService.findPlaceByID(id)
     }
 }

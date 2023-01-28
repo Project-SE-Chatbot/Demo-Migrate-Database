@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
-import { Body, Delete, Post, Put } from '@nestjs/common/decorators';
+import { Controller, Get, ParseIntPipe } from '@nestjs/common';
+import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
 import { Free_ElectiveDTO } from './DTO/elective.dto';
+import { updateFree_ElectiveDTO } from './DTO/updateElective.dto';
 import { FreeElectiveService } from './free-elective.service';
 
 @Controller('free-elective')
@@ -17,13 +18,18 @@ export class FreeElectiveController {
         this.electiveService.createElective(createElective)
     }
 
-    @Put()
-    editElective(){
-
+    @Put(':id')
+    editElective(@Param('id', ParseIntPipe) id: number, @Body() updateElective: updateFree_ElectiveDTO ){
+        this.electiveService.updateElective(id, updateElective)
     }
 
-    @Delete()
-    deleteElectiveByID(){
-        
+    @Delete(':id')
+    deleteElectiveByID(@Param('id', ParseIntPipe) id: number){
+        this.electiveService.deleteElective(id)
+    }
+
+    @Get(':id')
+    findElectiveByID(@Param('id', ParseIntPipe) id: number){
+        this.electiveService.findElectiveByID(id)
     }
 }

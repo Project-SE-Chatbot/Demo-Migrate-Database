@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { DegreeService } from './degree.service';
 import { DegreeDTO } from './DTO/degree.dto';
+import { updateDegreeDTO } from './DTO/updateDegree.dto';
 
 @Controller('degree')
 export class DegreeController {
@@ -15,13 +16,18 @@ export class DegreeController {
         this.degreeService.createDegree(createDegreeDTO)
     }
 
-    @Put()
-    editDegree(){
-
+    @Put(':id')
+    editDegree(@Param('id', ParseIntPipe) id: number, @Body() updateDegree: updateDegreeDTO ){
+        this.degreeService.updateDegree(id, updateDegree)
     }
 
-    @Delete()
-    deleteDegreeByID(){
-        
+    @Delete(':id')
+    deleteDegreeByID(@Param('id', ParseIntPipe) id: number){
+        this.degreeService.deleteDegree(id)
+    }
+
+    @Get(':id')
+    findDegreeByID(@Param('id', ParseIntPipe) id: number){
+        this.degreeService.findDegreeByID(id)
     }
 }

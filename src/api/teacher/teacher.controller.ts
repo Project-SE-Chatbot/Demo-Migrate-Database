@@ -1,6 +1,7 @@
-import { Controller, Delete, Get, Put } from '@nestjs/common';
-import { Body, Post } from '@nestjs/common/decorators';
+import { Controller, Delete, Get, ParseIntPipe, Put } from '@nestjs/common';
+import { Body, Param, Post } from '@nestjs/common/decorators';
 import { TeacherDTO } from './DTO/teacher.dto';
+import { updateTeacherDTO } from './DTO/updateTeacher.dto';
 import { TeacherService } from './teacher.service';
 
 @Controller('teacher')
@@ -17,13 +18,18 @@ export class TeacherController {
         this.teacherService.createTeacher(createTeacher)
     }
 
-    @Put()
-    editTeacher(){
-
+    @Put(':id')
+    editTeacher(@Param('id', ParseIntPipe) id: number, @Body() updateTeacher: updateTeacherDTO ){
+        this.teacherService.updateTeacher(id, updateTeacher)
     }
 
-    @Delete()
-    deleteTeacherByID(){
-        
+    @Delete(':id')
+    deleteTeacherByID(@Param('id', ParseIntPipe) id: number){
+        this.teacherService.deleteTeacher(id)
+    }
+
+    @Get(':id')
+    findTeacherByID(@Param('id', ParseIntPipe) id: number){
+        this.teacherService.findTeacherByID(id)
     }
 }

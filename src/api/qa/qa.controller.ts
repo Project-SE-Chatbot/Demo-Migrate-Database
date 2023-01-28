@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Q_And_A_DTO } from './DTO/qa.dto';
+import { updateQ_And_A_DTO } from './DTO/updateQA.dto';
 import { QaService } from './qa.service';
 
 @Controller('qa')
@@ -16,13 +17,18 @@ export class QaController {
         this.QAService.createQA(createQA)
     }
 
-    @Put()
-    editQA(){
-
+    @Put(':id')
+    editQA(@Param('id', ParseIntPipe) id: number, @Body() updateQA: updateQ_And_A_DTO){
+        this.QAService.updateQA(id, updateQA)
     }
 
-    @Delete()
-    deleteQAByID(){
-        
+    @Delete(':id')
+    deleteQAByID(@Param('id', ParseIntPipe) id: number){
+        this.QAService.deleteQA(id)
+    }
+
+    @Get(':id')
+    findQAByID(@Param('id', ParseIntPipe) id: number){
+        this.QAService.findQAByID(id)
     }
 }

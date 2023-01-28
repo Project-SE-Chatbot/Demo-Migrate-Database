@@ -1,6 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { Body, Delete, Get, Post, Put } from '@nestjs/common/decorators';
+import { Controller, ParseIntPipe } from '@nestjs/common';
+import { Body, Delete, Get, Param, Post, Put } from '@nestjs/common/decorators';
 import { FeedbackDTO } from './DTO/feedback.dto';
+import { updateFeedbackDTO } from './DTO/updateFeedback.dto';
 import { FeedBackService } from './feed-back.service';
 
 @Controller('feed-back')
@@ -17,13 +18,18 @@ export class FeedBackController {
         this.feedbackService.createFeedback(createFeedback)
     }
 
-    @Put()
-    editFeedBack(){
-
+    @Put(':id')
+    editFeedBack(@Param('id', ParseIntPipe) id: number, @Body() updateFeedback: updateFeedbackDTO ){
+        this.feedbackService.updateFeedback(id, updateFeedback)
     }
 
-    @Delete()
-    deleteFeedBackByID(){
-        
+    @Delete(':id')
+    deleteFeedBackByID(@Param('id', ParseIntPipe) id: number){
+        this.feedbackService.deleteFeedback(id)
+    }
+
+    @Get(':id')
+    findFeedbackByID(@Param('id', ParseIntPipe) id: number){
+        this.feedbackService.findFeedbackByID(id)
     }
 }

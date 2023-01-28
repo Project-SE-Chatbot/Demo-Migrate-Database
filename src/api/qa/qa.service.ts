@@ -19,4 +19,16 @@ export class QaService {
         const newQA = this.QARepository.create(QADetail)
         return this.QARepository.save(newQA)
     }
+
+    updateQA(id_q_and_a: number, updateQA: Q_And_AParam) {
+        return this.QARepository.update({ id_q_and_a }, { ...updateQA });
+      }
+    
+      deleteQA(id_q_and_a: number) {
+        return this.QARepository.delete({ id_q_and_a });
+      }
+    
+      findQAByID(id_q_and_a: number) {
+        return this.QARepository.findOne({ where: { id_q_and_a } });
+      }
 }

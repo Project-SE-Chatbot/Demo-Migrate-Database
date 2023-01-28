@@ -19,4 +19,19 @@ export class MajorService {
         const newMajor = this.majorRepository.create(majorDetail)
         return this.majorRepository.save(newMajor)
     }
+
+    updateMajor(id_major: number, updateMajor: MajorParam) {
+        return this.majorRepository.update(
+          { id_major },
+          { ...updateMajor },
+        );
+      }
+    
+      deleteMajor(id_major: number) {
+        return this.majorRepository.delete({ id_major });
+      }
+    
+      findMajorByID(id_major: number) {
+        return this.majorRepository.findOne({ where: { id_major } });
+      }
 }

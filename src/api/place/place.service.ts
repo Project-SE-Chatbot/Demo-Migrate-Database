@@ -6,17 +6,28 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class PlaceService {
+  constructor(
+    @InjectRepository(Place) private placeRepository: Repository<Place>,
+  ) {}
 
-    constructor(
-        @InjectRepository(Place) private placeRepository: Repository<Place>
-    ){}
+  findPlace() {
+    return this.placeRepository.find();
+  }
 
-    findPlace(){
-        return this.placeRepository.find()
-    }
+  createPlace(placeDetail: PlaceParam) {
+    const newPlace = this.placeRepository.create(placeDetail);
+    return this.placeRepository.save(newPlace);
+  }
 
-    createPlace(placeDetail: PlaceParam){
-        const newPlace = this.placeRepository.create(placeDetail)
-        return this.placeRepository.save(newPlace)
-    }
+  updatePlace(id_place: number, updatePlace: PlaceParam) {
+    return this.placeRepository.update({ id_place }, { ...updatePlace });
+  }
+
+  deletePlace(id_place: number) {
+    return this.placeRepository.delete({ id_place });
+  }
+
+  findPlaceByID(id_place: number) {
+    return this.placeRepository.findOne({ where: { id_place } });
+  }
 }

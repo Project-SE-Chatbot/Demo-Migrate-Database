@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
-import { Body, Delete, Post, Put } from '@nestjs/common/decorators';
+import { Controller, Get, ParseIntPipe } from '@nestjs/common';
+import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
 import { MajorDTO } from './DTO/major.dto';
+import { updateMajorDTO } from './DTO/updateMajor.dto';
 import { MajorService } from './major.service';
 
 @Controller('major')
@@ -17,13 +18,18 @@ export class MajorController {
         this.majorService.createMajor(createMajor)
     }
 
-    @Put()
-    editMajor(){
-
+    @Put(':id')
+    editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){
+        this.majorService.updateMajor(id, updateMajor)
     }
 
-    @Delete()
-    deleteMajorByID(){
-        
+    @Delete(':id')
+    deleteMajorByID(@Param('id', ParseIntPipe) id: number){
+        this.majorService.deleteMajor(id)
+    }
+
+    @Get(':id')
+    findMajorByID(@Param('id', ParseIntPipe) id: number){
+        this.majorService.findMajorByID(id)
     }
 }

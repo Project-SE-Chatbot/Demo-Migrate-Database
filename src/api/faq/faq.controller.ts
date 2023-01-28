@@ -1,6 +1,7 @@
-import { Controller } from '@nestjs/common';
-import { Body, Delete, Get, Post, Put } from '@nestjs/common/decorators';
+import { Controller, ParseIntPipe } from '@nestjs/common';
+import { Body, Delete, Get, Param, Post, Put } from '@nestjs/common/decorators';
 import { FaqDTO } from './DTO/faq.dto';
+import { updateFaqDTO } from './DTO/updateFAQ.dto';
 import { FaqService } from './faq.service';
 
 @Controller('faq')
@@ -16,13 +17,18 @@ export class FaqController {
         this.faqService.createFAQ(createFaq)
     }
 
-    @Put()
-    editFAQ(){
-
+    @Put(':id')
+    editFAQ(@Param('id', ParseIntPipe) id: number, @Body() updateFAQ: updateFaqDTO){
+        this.faqService.updateFAQ(id, updateFAQ)
     }
 
-    @Delete()
-    deleteFAQByID(){
-        
+    @Delete(':id')
+    deleteFAQByID(@Param('id', ParseIntPipe) id: number){
+        this.faqService.deleteFAQ(id)
+    }
+
+    @Get(':id')
+    findFAQByID(@Param('id', ParseIntPipe) id: number){
+        this.faqService.findFAQByID(id)
     }
 }

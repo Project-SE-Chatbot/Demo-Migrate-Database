@@ -19,4 +19,18 @@ export class AdminService {
         const newAdmin = this.adminRepository.create(adminDetail)
         return this.adminRepository.save(newAdmin)
     }
+
+    updateAdmin(id_admin: number, updateAdmin: AdminParam){
+        return this.adminRepository.update({id_admin}, {...updateAdmin})
+    }
+
+    deleteAdmin(id_admin: number){
+        return this.adminRepository.delete({id_admin})
+    }
+
+    findAdminByID(id_admin: number){
+        return this.adminRepository.findOne({where:{id_admin}})
+    }
+
+
 }

@@ -1,28 +1,35 @@
-import { Controller, Delete, Get, Put } from '@nestjs/common';
-import { Body, Post } from '@nestjs/common/decorators';
+import { Controller, Delete, Get, Put, ParseIntPipe } from '@nestjs/common';
+import { Body, Param, Post } from '@nestjs/common/decorators';
 import { AdminService } from './admin.service';
 import { AdminDTO } from './DTO/admin.dto';
+import { updateAdminDTO } from './DTO/updateAdmin.dto';
 
 @Controller('admin')
 export class AdminController {
-    constructor(private adminService: AdminService){}
-    @Get()
-    async getAdmin(){
-        return await this.adminService.findAdmin()
-    }
+  constructor(private adminService: AdminService) {}
+  @Get()
+  async getAdmin() {
+    return await this.adminService.findAdmin();
+  }
 
-    @Post()
-    createAdmin(@Body() createAdmin: AdminDTO){
-        this.adminService.createAdmin(createAdmin)
-    }
+  @Post()
+  createAdmin(@Body() createAdmin: AdminDTO) {
+    this.adminService.createAdmin(createAdmin);
+  }
 
-    @Put()
-    editAdmin(){
+  @Put(':id')
+  editAdmin(@Param('id', ParseIntPipe) id: number, @Body() updateAdminDTO: updateAdminDTO) {
+    this.adminService.updateAdmin(id, updateAdminDTO)
+  }
 
-    }
+  @Delete(':id')
+  deleteAdminByID(@Param('id', ParseIntPipe) id: number ) {
+    this.adminService.deleteAdmin(id)
+  }
 
-    @Delete()
-    deleteAdminByID(){
-        
-    }
+  @Get(':id')
+  findAdminByID(@Param('id', ParseIntPipe) id: number){
+    this.adminService.findAdminByID(id)
+  }
+
 }
