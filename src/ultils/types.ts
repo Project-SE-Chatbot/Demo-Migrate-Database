@@ -51,6 +51,8 @@ export type ElectiveParam = {
 };
 
 export type MajorParam = {
+  course_code: string
+  name: string
   name_teacher: string;
   term: string;
   place: string;
