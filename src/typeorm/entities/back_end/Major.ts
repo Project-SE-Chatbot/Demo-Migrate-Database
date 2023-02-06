@@ -1,4 +1,5 @@
-import {  Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {  Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Place } from "./Place";
 
 @Entity({name: 'major'})
 
@@ -22,4 +23,6 @@ export class Major{
     @Column()
     time  : string;
 
+    @OneToOne(() => Place, (place) => place.major, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    place_study: Place
 }
