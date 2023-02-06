@@ -1,5 +1,5 @@
-import internal from "stream";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Register } from "./Register";
 
 @Entity({name: 'degree'})
 
@@ -15,5 +15,8 @@ export class Degree{
 
     @Column()
     link : string;
+
+    @ManyToOne(() => Register, (register) => register.info, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    register: Register
 
 }
