@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Place } from 'src/typeorm/entities/back_end/Place';
-import { PlaceParam } from 'src/ultils/types';
+import { findPlace, PlaceParam } from 'src/ultils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -27,7 +27,11 @@ export class PlaceService {
     return this.placeRepository.delete({ id_place });
   }
 
-  findPlaceByID(id_place: number) {
-    return this.placeRepository.findOne({ where: { id_place } });
+  findPlaceByID(id: number) {
+    return this.placeRepository.findOne({ where: { id_place: id } });
+  }
+
+  findPlaceByName(findRoom: string){
+    return this.placeRepository.findOne({ where: {room: findRoom} })
   }
 }

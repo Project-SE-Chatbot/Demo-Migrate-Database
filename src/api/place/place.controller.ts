@@ -1,5 +1,6 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
+import { findPlaceDTO } from './DTO/findPlaceName.dio';
 import { PlaceDTO } from './DTO/place.dto';
 import { updatePlaceDTO } from './DTO/updatePlace.dto';
 import { PlaceService } from './place.service';
@@ -18,6 +19,11 @@ export class PlaceController {
         this.placeService.createPlace(createPlace)
     }
 
+    @Get('room')
+    findPlaceByName(@Body() findPlace: findPlaceDTO){
+        return this.placeService.findPlaceByName(findPlace.room)
+    }
+
     @Put(':id')
     editPlace(@Param('id', ParseIntPipe) id: number, @Body() updatePlace: updatePlaceDTO){
         this.placeService.updatePlace(id, updatePlace)
@@ -30,6 +36,7 @@ export class PlaceController {
 
     @Get(':id')
     findPlaceByID(@Param('id', ParseIntPipe) id: number){
-        this.placeService.findPlaceByID(id)
+        return this.placeService.findPlaceByID(id)
     }
+
 }
