@@ -6,6 +6,9 @@ export class Teacher{
     @PrimaryGeneratedColumn()
     id_teacher : number;
 
+    @Column()
+    name: string
+
     // ???
     @Column()
     picture: string;

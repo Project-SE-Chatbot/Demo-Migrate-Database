@@ -1,6 +1,7 @@
 export class updateTeacherDTO {
-    picture: string;
-    location: string;
-    address: string;
-    time: string;
-  }
+  name: string;
+  picture: string;
+  location: string;
+  address: string;
+  time: string;
+}
