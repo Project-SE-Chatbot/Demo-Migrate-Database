@@ -8,6 +8,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
+import { DegreeDTO } from '../degree/DTO/degree.dto';
 import { RegisterDTO } from './DTO/register.dto';
 import { updateRegisterDTO } from './DTO/updateRegister.dto';
 import { RegisterService } from './register.service';
@@ -23,7 +24,15 @@ export class RegisterController {
 
   @Post()
   createRegister(@Body() createReg: RegisterDTO) {
-    this.registerService.createReg(createReg);
+    return this.registerService.createReg(createReg);
+  }
+
+  @Post(':id/degree')
+  createDegree(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() createDegree: DegreeDTO,
+  ) {
+    return this.registerService.createDegree(id, createDegree)
   }
 
   @Put(':id')

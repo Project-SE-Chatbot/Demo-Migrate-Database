@@ -1,3 +1,3 @@
 export class RegisterDTO {
-  degree: number;
+  degree: string;
 }
