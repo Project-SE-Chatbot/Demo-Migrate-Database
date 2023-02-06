@@ -1,4 +1,5 @@
-import {  Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {  Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Major } from "./Major";
 
 @Entity({name: 'free_elective'})
 
@@ -13,6 +14,7 @@ export class Free_Elective{
     @Column()
     review : string;
 
-
+    @ManyToOne(() => Major, (major) => major.review, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    major: Major
 
 }
