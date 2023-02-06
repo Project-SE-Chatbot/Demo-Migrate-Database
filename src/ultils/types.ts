@@ -1,24 +1,24 @@
-// export type CreateUserParsm = {
-//   username: string;
-//   password: string;
-// };
+export type CreateUserParsm = {
+  username: string;
+  password: string;
+};
 
-// export type UpdateUserParsm = {
-//   username: string;
-//   password: string;
-// };
+export type UpdateUserParsm = {
+  username: string;
+  password: string;
+};
 
-// export type CreateUserProfileParsm = {
-//   firstName: string;
-//   lastName: string;
-//   age: number;
-//   job: string;
-// };
+export type CreateUserProfileParsm = {
+  firstName: string;
+  lastName: string;
+  age: number;
+  job: string;
+};
 
-// export type CreateUserPostParsm = {
-//   title: string;
-//   description: string;
-// };
+export type CreateUserPostParsm = {
+  title: string;
+  description: string;
+};
 
 export type DegreeParam = {
   time: string;
@@ -74,7 +74,7 @@ export type Q_And_AParam = {
 };
 
 export type RegisterParam = {
-  degree: number;
+  degree: string;
 };
 
 export type TeacherParam = {
@@ -82,4 +82,8 @@ export type TeacherParam = {
   location: string;
   address: string;
   time: string;
+}
+
+export type findPlace = {
+  room: string
 }
