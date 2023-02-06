@@ -1,5 +1,6 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
+import { PlaceDTO } from '../place/DTO/place.dto';
 import { MajorDTO } from './DTO/major.dto';
 import { updateMajorDTO } from './DTO/updateMajor.dto';
 import { MajorService } from './major.service';
@@ -16,6 +17,12 @@ export class MajorController {
     @Post()
     createMajor(@Body() createMajor: MajorDTO){
         this.majorService.createMajor(createMajor)
+    }
+
+    @Post(':id/place')
+    createPlace(@Param('id', ParseIntPipe) id: number,
+    @Body() createPlace: PlaceDTO){
+        this.majorService.createPlace(id, createPlace)
     }
 
     @Put(':id')
