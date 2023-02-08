@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, ParseIntPipe, Put } from '@nestjs/common';
 import { Body, Param, Post } from '@nestjs/common/decorators';
+import { findNameDTO } from './DTO/findName.dto';
 import { TeacherDTO } from './DTO/teacher.dto';
 import { updateTeacherDTO } from './DTO/updateTeacher.dto';
 import { TeacherService } from './teacher.service';
@@ -31,5 +32,10 @@ export class TeacherController {
     @Get(':id')
     findTeacherByID(@Param('id', ParseIntPipe) id: number){
         this.teacherService.findTeacherByID(id)
+    }
+
+    @Get('name')
+    findTeacherByName(@Body() findName: findNameDTO){
+        this.teacherService.findTeacherByName(findName.name)
     }
 }

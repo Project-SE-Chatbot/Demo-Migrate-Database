@@ -33,4 +33,8 @@ export class TeacherService {
   findTeacherByID(id_teacher: number) {
     return this.teacherRepository.findOne({ where: { id_teacher } });
   }
+
+  findTeacherByName(name: string){
+    return this.teacherRepository.find({where: {name: name}})
+  }
 }
