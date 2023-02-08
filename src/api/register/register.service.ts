@@ -17,7 +17,7 @@ export class RegisterService {
   ) {}
 
   findRegister() {
-    return this.registerRepository.find({relations: ['Degree']});
+    return this.registerRepository.find({relations: ['info']});
   }
 
   async createReg(regDetail: RegisterParam) {
