@@ -18,7 +18,8 @@ export class MajorController {
 
     @Post()
     createMajor(@Body() createMajor: MajorDTO){
-        this.majorService.createMajor(createMajor)
+        if(createMajor.name != null)
+            this.majorService.createMajor(createMajor)
     }
 
     @Post(':id/place')

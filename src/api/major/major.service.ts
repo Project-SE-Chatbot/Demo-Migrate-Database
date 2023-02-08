@@ -16,7 +16,7 @@ export class MajorService {
   ) {}
 
   findMajor() {
-    return this.majorRepository.find({relations: ['Place', 'Free_Elective']});
+    return this.majorRepository.find({relations: ['place_study', 'review']});
   }
 
   createMajor(majorDetail: MajorParam) {
