@@ -1,7 +1,10 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
+import { createTeacher } from 'src/ultils/types';
 import { Free_ElectiveDTO } from '../free-elective/DTO/elective.dto';
 import { PlaceDTO } from '../place/DTO/place.dto';
+import { TeacherDTO } from '../teacher/DTO/teacher.dto';
+import { createMajorTeacherDTO } from './DTO/createMajorTeacher.dto';
 import { findNameDTO } from './DTO/findName.dto';
 import { MajorDTO } from './DTO/major.dto';
 import { updateMajorDTO } from './DTO/updateMajor.dto';
@@ -32,6 +35,12 @@ export class MajorController {
     createReview(@Param('id', ParseIntPipe) id: number,
     @Body() createReview: Free_ElectiveDTO){
         this.majorService.createReview(id, createReview)
+    }
+
+    @Post(':id/teacher')
+    createTeacher(@Param('id', ParseIntPipe) id: number,
+    @Body() createTeacher: createTeacher){
+        this.majorService.createTeacher(id, createTeacher)
     }
 
     @Put(':id')
