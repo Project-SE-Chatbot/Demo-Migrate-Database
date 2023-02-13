@@ -53,14 +53,14 @@ export class MajorController {
         this.majorService.deleteMajor(id)
     }
 
-    @Get(':id')
-    async findMajorByID(@Param('id', ParseIntPipe) id: number){
-        return await this.majorService.findMajorByID(id)
-    }
+    // @Get(':id')
+    // async findMajorByID(@Param('id', ParseIntPipe) id: number){
+    //     return await this.majorService.findMajorByID(id)
+    // }
 
     @Get(':code')
-    async findMajorByCode(@Param('id') id: string){
-        return await this.majorService.findMajorByCode(id)
+    async findMajorByCode(@Param('code') code: string){
+        return await this.majorService.findMajorByCode(code)
     }
 
     @Get('place')
