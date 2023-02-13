@@ -19,7 +19,7 @@ export const dataSourceOptions: DataSourceOptions = {
     host: '127.0.0.1',
     port: 3306,
     username:'root',
-    password:'SE404_Cp',
+    password:'',
     database:'chat_bot_cpe',
     entities:[User,Post,Profile,
               Admin,Degree,Faq,

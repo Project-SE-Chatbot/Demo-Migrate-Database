@@ -1,4 +1,4 @@
-import { IsNotEmpty } from "class-validator";
+// import { IsNotEmpty } from "class-validator";
 import {  Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Free_Elective } from "./Free Elective";
 import { Place } from "./Place";
@@ -11,31 +11,31 @@ export class Major{
     id_major: number;
     
     @Column({unique: true})
-    @IsNotEmpty()
+    // @IsNotEmpty()
     course_code: string
 
     @Column({unique: true})
-    @IsNotEmpty()
+    // @IsNotEmpty()
     name: string
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     name_teacher: string;
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     term: string;
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     place : string;
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     day  : string;
     
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
     time  : string;
 
     @OneToOne(() => Place, (place) => place.major, {onDelete: "CASCADE", onUpdate: "CASCADE"})
