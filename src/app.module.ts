@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { User } from './typeorm/entities/test/User';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { DataSource } from 'typeorm';
-import { UsersModule } from './users/users.module';
+
 import { Profile } from './typeorm/entities/test/Profile';
 import { Post } from './typeorm/entities/test/Post';
 import { Faq } from './typeorm/entities/back_end/FAQ';
@@ -29,11 +29,12 @@ import { QaModule } from './api/qa/qa.module';
 import { RegisterModule } from './api/register/register.module';
 import { TeacherModule } from './api/teacher/teacher.module';
 import { AdminModule } from './api/admin/admin.module';
+import { FreeElectiveModule } from './api/free-elective/free-elective.module';
 
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule, DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule, FreeElectiveModule],
   controllers: [AppController],
   providers: [AppService],
 })

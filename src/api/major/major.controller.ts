@@ -54,8 +54,8 @@ export class MajorController {
     }
 
     @Get(':id')
-    findMajorByID(@Param('id', ParseIntPipe) id: number){
-        this.majorService.findMajorByID(id)
+    async findMajorByID(@Param('id', ParseIntPipe) id: number){
+        return await this.majorService.findMajorByID(id)
     }
 
     @Get(':code')
