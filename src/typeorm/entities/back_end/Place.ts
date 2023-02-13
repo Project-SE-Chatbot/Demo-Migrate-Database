@@ -1,4 +1,4 @@
-import {  Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import {  Column, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Major } from "./Major";
 
 @Entity({name: 'place'})
@@ -17,7 +17,7 @@ export class Place{
     @Column()
     location   : string;
 
-    @OneToOne(() => Major, (major) => major.place_study, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    major: Major
+    @OneToMany(() => Major, (major) => major.place, {onDelete: "SET NULL", onUpdate: "CASCADE"})
+    major: Major[]
 
 }

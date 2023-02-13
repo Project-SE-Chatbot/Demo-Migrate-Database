@@ -53,9 +53,7 @@ export type ElectiveParam = {
 export type MajorParam = {
   course_code: string
   name: string
-  name_teacher: string;
   term: string;
-  place: string;
   day: string;
   time: string;
 };
@@ -88,4 +86,8 @@ export type TeacherParam = {
 
 export type findPlace = {
   room: string
+}
+
+export type createTeacher = {
+  name: string
 }

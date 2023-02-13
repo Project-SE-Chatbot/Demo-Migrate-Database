@@ -1,4 +1,5 @@
-import {  Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {  Column, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Major } from "./Major";
 
 @Entity({name: 'teacher'})
 
@@ -22,5 +23,8 @@ export class Teacher{
     @Column()
     time  : string;
     
+    @ManyToMany(() => Major, (major) => major.teacher, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @JoinTable()
+    major: Major[]
 
 }
