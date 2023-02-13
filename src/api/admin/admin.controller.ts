@@ -28,8 +28,8 @@ export class AdminController {
   }
 
   @Get(':id')
-  findAdminByID(@Param('id', ParseIntPipe) id: number){
-    this.adminService.findAdminByID(id)
+  async findAdminByID(@Param('id', ParseIntPipe) id: number){
+    return await this.adminService.findAdminByID(id)
   }
 
 }

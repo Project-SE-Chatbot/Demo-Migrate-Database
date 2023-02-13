@@ -29,7 +29,7 @@ export class FreeElectiveController {
     }
 
     @Get(':id')
-    findElectiveByID(@Param('id', ParseIntPipe) id: number){
-        this.electiveService.findElectiveByID(id)
+    async findElectiveByID(@Param('id', ParseIntPipe) id: number){
+        return await this.electiveService.findElectiveByID(id)
     }
 }

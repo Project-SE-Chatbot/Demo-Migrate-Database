@@ -27,7 +27,7 @@ export class DegreeController {
     }
 
     @Get(':id')
-    findDegreeByID(@Param('id', ParseIntPipe) id: number){
-        this.degreeService.findDegreeByID(id)
+    async findDegreeByID(@Param('id', ParseIntPipe) id: number){
+        return await this.degreeService.findDegreeByID(id)
     }
 }

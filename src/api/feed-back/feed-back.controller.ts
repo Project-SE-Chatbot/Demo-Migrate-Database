@@ -29,7 +29,7 @@ export class FeedBackController {
     }
 
     @Get(':id')
-    findFeedbackByID(@Param('id', ParseIntPipe) id: number){
-        this.feedbackService.findFeedbackByID(id)
+    async findFeedbackByID(@Param('id', ParseIntPipe) id: number){
+        return await this.feedbackService.findFeedbackByID(id)
     }
 }

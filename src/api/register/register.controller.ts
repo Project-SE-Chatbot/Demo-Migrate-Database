@@ -49,7 +49,7 @@ export class RegisterController {
   }
 
   @Get(':id')
-  findRegisterByID(@Param('id', ParseIntPipe) id: number){
-    this.registerService.findRegisterByID(id)
+  async findRegisterByID(@Param('id', ParseIntPipe) id: number){
+    return await this.registerService.findRegisterByID(id)
   }
 }

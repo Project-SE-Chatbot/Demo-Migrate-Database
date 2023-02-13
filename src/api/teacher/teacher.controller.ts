@@ -30,12 +30,12 @@ export class TeacherController {
     }
 
     @Get(':id')
-    findTeacherByID(@Param('id', ParseIntPipe) id: number){
-        this.teacherService.findTeacherByID(id)
+    async findTeacherByID(@Param('id', ParseIntPipe) id: number){
+        return await this.teacherService.findTeacherByID(id)
     }
 
     @Get('name')
-    findTeacherByName(@Body() findName: findNameDTO){
-        this.teacherService.findTeacherByName(findName.name)
+    async findTeacherByName(@Body() findName: findNameDTO){
+        return await this.teacherService.findTeacherByName(findName.name)
     }
 }

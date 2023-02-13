@@ -59,12 +59,12 @@ export class MajorController {
     }
 
     @Get(':code')
-    findMajorByCode(@Param('id') id: string){
-        this.majorService.findMajorByCode(id)
+    async findMajorByCode(@Param('id') id: string){
+        return await this.majorService.findMajorByCode(id)
     }
 
     @Get('place')
-    findMajorByName(@Body() findName: findNameDTO){
-        this.majorService.findMajorByName(findName.name)
+    async findMajorByName(@Body() findName: findNameDTO){
+        return await this.majorService.findMajorByName(findName.name)
     }
 }

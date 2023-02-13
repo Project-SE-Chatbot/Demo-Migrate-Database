@@ -28,7 +28,7 @@ export class FaqController {
     }
 
     @Get(':id')
-    findFAQByID(@Param('id', ParseIntPipe) id: number){
-        this.faqService.findFAQByID(id)
+    async findFAQByID(@Param('id', ParseIntPipe) id: number){
+        return await this.faqService.findFAQByID(id)
     }
 }

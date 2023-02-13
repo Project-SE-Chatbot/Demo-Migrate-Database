@@ -35,8 +35,8 @@ export class PlaceController {
     }
 
     @Get(':id')
-    findPlaceByID(@Param('id', ParseIntPipe) id: number){
-        return this.placeService.findPlaceByID(id)
+    async findPlaceByID(@Param('id', ParseIntPipe) id: number){
+        return await this.placeService.findPlaceByID(id)
     }
 
 }
