@@ -50,7 +50,12 @@ export class MajorController {
 
     @Delete(':id')
     deleteMajorByID(@Param('id', ParseIntPipe) id: number){
-        this.majorService.deleteMajor(id)
+        this.majorService.deleteMajorID(id)
+    }
+
+    @Delete()
+    deleteMajor(){
+        this.majorService.deleteMajor()
     }
 
     @Get(':id')

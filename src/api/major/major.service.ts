@@ -91,8 +91,12 @@ export class MajorService {
     return this.majorRepository.update({ id_major }, { ...updateMajor });
   }
 
-  deleteMajor(id_major: number) {
+  deleteMajorID(id_major: number) {
     return this.majorRepository.delete({ id_major });
+  }
+
+  deleteMajor() {
+    return this.majorRepository.clear();
   }
 
   findMajorByID(id_major: number) {
