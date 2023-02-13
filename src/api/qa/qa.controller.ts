@@ -28,7 +28,7 @@ export class QaController {
     }
 
     @Get(':id')
-    findQAByID(@Param('id', ParseIntPipe) id: number){
-        this.QAService.findQAByID(id)
+    async findQAByID(@Param('id', ParseIntPipe) id: number){
+        return await this.QAService.findQAByID(id)
     }
 }

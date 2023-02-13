@@ -29,7 +29,7 @@ export class PlanController {
     }
 
     @Get(':id')
-    findPlanByID(@Param('id', ParseIntPipe) id: number){
-        this.planService.findPlanByID(id)
+    async findPlanByID(@Param('id', ParseIntPipe) id: number){
+        return await this.planService.findPlanByID(id)
     }
 }
