@@ -27,8 +27,8 @@ export class PlaceService {
     return this.placeRepository.delete({ id_place });
   }
 
-  findPlaceByID(id: number) {
-    return this.placeRepository.findOne({ where: { id_place: id } });
+  findPlaceByRoom(room: string) {
+    return this.placeRepository.findOne({ where: { room: room } });
   }
 
   findPlaceByName(findRoom: string){
