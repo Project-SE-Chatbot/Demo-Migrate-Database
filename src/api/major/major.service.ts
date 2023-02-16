@@ -104,11 +104,11 @@ export class MajorService {
   }
 
   findMajorByCode(id: string) {
-    return this.majorRepository.findOne({ where: { course_code: id } });
+    return this.majorRepository.findOne({ where: { course_code: id }, relations: ['place', 'review', 'teacher'] });
   }
 
   findMajorByName(name: string){
-    return this.majorRepository.findOne({ where: {name: name} })
+    return this.majorRepository.findOne({ where: {name: name}, relations: ['place', 'review', 'teacher'] })
   }
 
 }
