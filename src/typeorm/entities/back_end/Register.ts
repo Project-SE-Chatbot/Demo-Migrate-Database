@@ -20,7 +20,4 @@ export class Register {
     @Column({unique: true})
     degree : string;
 
-    @OneToMany(() => Degree, (degree) => degree.register, {onDelete: "CASCADE", onUpdate: "CASCADE"})   
-    info: Degree[]
-
 }

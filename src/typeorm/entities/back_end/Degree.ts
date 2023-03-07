@@ -13,7 +13,7 @@ export class Degree{
     @Column()
     link : string;
 
-    @ManyToOne(() => Register, (register) => register.info, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    register: Register
+    @ManyToOne(() => Register, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    register: number
 
 }

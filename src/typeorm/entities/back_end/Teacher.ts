@@ -25,9 +25,5 @@ export class Teacher{
 
     @Column()
     link : string;
-    
-    @ManyToMany(() => Major, (major) => major.teacher, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    @JoinTable()
-    major: Major[]
 
 }

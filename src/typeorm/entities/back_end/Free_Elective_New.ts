@@ -1,4 +1,5 @@
 import {  Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Major } from "./Major";
 
 
 @Entity({name: 'free_elective_new'})
@@ -20,5 +21,6 @@ export class Free_Elective_New{
     @Column()
     link_description : string;
 
-
+    @ManyToOne(() => Major, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    Major: number;
 }
