@@ -12,11 +12,9 @@ export class Major{
     id_major: number;
     
     @Column({unique: true})
-
     course_code: string
-
+    
     @Column({unique: true})
-
     name: string
 
     @ManyToMany(() => Teacher, (teacher) => teacher.major, {onDelete: "CASCADE", onUpdate: "CASCADE"})
@@ -24,18 +22,15 @@ export class Major{
     teacher: Teacher[];
 
     @Column()
-
     term: string;
 
     @ManyToOne(() => Place, (place) => place.major, {onDelete: "SET NULL", onUpdate: "CASCADE"})
     place: Place
 
     @Column()
-
     day  : string;
     
     @Column()
-
     time  : string;
 
     @OneToMany(() => Free_Elective, (freeElective) => freeElective.major, {onDelete: "CASCADE", onUpdate: "CASCADE"})

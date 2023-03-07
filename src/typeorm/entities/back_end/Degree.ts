@@ -8,10 +8,7 @@ export class Degree{
     id_degree : number;
 
     @Column()
-    time : string;
-
-    @Column()
-    Amount : string;
+    name : string;
 
     @Column()
     link : string;

@@ -12,12 +12,17 @@ export class Place{
     building  : string;
 
     @Column()
-    room   : string;
+    floor : string
 
     @Column()
-    location   : string;
+    room : string;
+
+    @Column()
+    link_location : string;
 
     @OneToMany(() => Major, (major) => major.place, {onDelete: "SET NULL", onUpdate: "CASCADE"})
     major: Major[]
+
+    
 
 }
