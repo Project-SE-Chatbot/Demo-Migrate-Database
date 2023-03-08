@@ -4,7 +4,7 @@ import { HttpException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Degree } from 'src/typeorm/entities/back_end/Degree';
 import { Register } from 'src/typeorm/entities/back_end/Register';
-import { Register_Key } from 'src/typeorm/entities/back_end/Register_key';
+import { Register_Key } from 'src/typeorm/entities/back_end/Register_Key';
 import { DegreeParam, RegisterParam } from 'src/ultils/types';
 import { Repository } from 'typeorm';
 

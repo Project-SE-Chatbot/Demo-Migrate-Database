@@ -14,7 +14,7 @@ import { Place_Key } from "src/typeorm/entities/back_end/Place_Key";
 import { Plan } from "src/typeorm/entities/back_end/Plan";
 import { Q_And_A } from "src/typeorm/entities/back_end/Q&A";
 import { Register } from "src/typeorm/entities/back_end/Register";
-import { Register_Key } from "src/typeorm/entities/back_end/Register_key";
+import { Register_Key } from "src/typeorm/entities/back_end/Register_Key";
 import { Teacher } from "src/typeorm/entities/back_end/Teacher";
 import { Teacher_Key } from "src/typeorm/entities/back_end/Teacher_Key";
 import {DataSource, DataSourceOptions } from "typeorm";
