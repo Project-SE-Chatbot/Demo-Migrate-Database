@@ -11,7 +11,7 @@ export class MajorController {
     constructor(private majorService: MajorService){}
 
     @Get()
-    async getMajor(){
+    async getMajor(){  
         return await this.majorService.findMajor()
     }
 
@@ -26,10 +26,17 @@ export class MajorController {
             this.majorService.createMajor(createMajor)
     }
 
-    @Put(':id')
-    editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){
-        this.majorService.updateMajor(id, updateMajor)
+    @Put('edit')
+    editTeacherAndPlace(@Body() updateMajor: updateMajorDTO ){
+        console.log(0);
+        
+        this.majorService.configTeacherANDPlaceMajor(updateMajor)
     }
+
+    // @Put(':id')
+    // editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){
+    //     this.majorService.updateMajor(id, updateMajor)
+    // }
 
     @Delete(':id')
     deleteMajorByID(@Param('id', ParseIntPipe) id: number){
