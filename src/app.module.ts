@@ -22,11 +22,12 @@ import { FreeElecKeyModule } from './api/call-by-key/free-elec-key/free-elec-key
 import { PlaceKeyModule } from './api/call-by-key/place-key/place-key.module';
 import { RegisterKeyModule } from './api/call-by-key/register-key/register-key.module';
 import { DegreeKeyModule } from './api/call-by-key/degree-key/degree-key.module';
+import { MajorElectiveModule } from './api/major-elective/major-elective.module';
 
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule, FreeElectiveModule, TeacherKeyModule, MajorKeyModule, FreeElecKeyModule, PlaceKeyModule, RegisterKeyModule, DegreeKeyModule],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule, FreeElectiveModule, TeacherKeyModule, MajorKeyModule, FreeElecKeyModule, PlaceKeyModule, RegisterKeyModule, DegreeKeyModule, MajorElectiveModule],
   controllers: [AppController],
   providers: [AppService],
 })
