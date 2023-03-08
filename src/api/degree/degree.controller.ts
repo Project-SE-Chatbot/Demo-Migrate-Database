@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { findKeyDTO } from '../dto_global/findKey.dto';
 import { DegreeService } from './degree.service';
 import { DegreeDTO } from './DTO/degree.dto';
 import { updateDegreeDTO } from './DTO/updateDegree.dto';
@@ -9,6 +10,11 @@ export class DegreeController {
     @Get()
     async getDegree(){
         return await this.degreeService.findDegree()
+    }
+
+    @Get('key')
+    async getDegreeKey(@Body() findDegree: findKeyDTO){
+        return await this.degreeService.findDegreeByKey(findDegree.key)
     }
 
     @Post()
@@ -26,8 +32,8 @@ export class DegreeController {
         this.degreeService.deleteDegree(id)
     }
 
-    @Get(':id')
-    async findDegreeByID(@Param('id', ParseIntPipe) id: number){
-        return await this.degreeService.findDegreeByID(id)
-    }
+    // @Get(':id')
+    // async findDegreeByID(@Param('id', ParseIntPipe) id: number){
+    //     return await this.degreeService.findDegreeByID(id)
+    // }
 }
