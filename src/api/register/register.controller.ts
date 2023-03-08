@@ -9,6 +9,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { DegreeDTO } from '../degree/DTO/degree.dto';
+import { findKeyDTO } from '../dto_global/findKey.dto';
 import { RegisterDTO } from './DTO/register.dto';
 import { updateRegisterDTO } from './DTO/updateRegister.dto';
 import { RegisterService } from './register.service';
@@ -21,6 +22,11 @@ export class RegisterController {
   async getRegister() {
     return await this.registerService.findRegister();
   }
+
+  @Get('key')
+    async getPlaceKey(@Body() findRegister: findKeyDTO){
+        return await this.registerService.findRegisterByKey(findRegister.key)
+    }
 
   @Post()
   createRegister(@Body() createReg: RegisterDTO) {
@@ -41,8 +47,8 @@ export class RegisterController {
     this.registerService.deleteRegister(id);
   }
 
-  @Get(':id')
-  async findRegisterByID(@Param('id', ParseIntPipe) id: number){
-    return await this.registerService.findRegisterByID(id)
-  }
+  // @Get(':id')
+  // async findRegisterByID(@Param('id', ParseIntPipe) id: number){
+  //   return await this.registerService.findRegisterByID(id)
+  // }
 }
