@@ -20,7 +20,4 @@ export class Free_Elective_New{
 
     @Column()
     link_description : string;
-
-    @ManyToOne(() => Major, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    Major: number;
 }
