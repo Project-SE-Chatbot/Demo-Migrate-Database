@@ -27,13 +27,6 @@ export class RegisterController {
     return this.registerService.createReg(createReg);
   }
 
-  @Post(':id/degree')
-  createDegree(
-    @Param('id', ParseIntPipe) id: number,
-    @Body() createDegree: DegreeDTO,
-  ) {
-    return this.registerService.createDegree(id, createDegree)
-  }
 
   @Put(':id')
   editRegister(

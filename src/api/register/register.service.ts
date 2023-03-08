@@ -28,17 +28,6 @@ export class RegisterService {
     return this.registerRepository.save(newReg);
   }
 
-  async createDegree(
-    id: number,
-    createDegree: DegreeParam,
-  ) {
-    const register = await this.registerRepository.findOneBy({ id_register: id });
-    if (!register)
-      throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
-
-    const newDegree = this.degreeRepository.create({...createDegree, register});
-    return this.degreeRepository.save(newDegree)
-  }
 
   updateRegister(id_register: number, updateRegister: RegisterParam) {
     
