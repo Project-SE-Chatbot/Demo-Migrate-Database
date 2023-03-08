@@ -61,6 +61,7 @@ export type MajorParam = {
 };
 
 export type TeacherAndPlaceForMajorParam = {
+  course_code: string
   name_teacher: string;
   place: string;
 };
