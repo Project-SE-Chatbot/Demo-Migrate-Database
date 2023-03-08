@@ -17,9 +17,6 @@ import { Register } from "src/typeorm/entities/back_end/Register";
 import { Register_Key } from "src/typeorm/entities/back_end/Register_key";
 import { Teacher } from "src/typeorm/entities/back_end/Teacher";
 import { Teacher_Key } from "src/typeorm/entities/back_end/Teacher_Key";
-import { Post } from "src/typeorm/entities/test/Post";
-import { Profile } from "src/typeorm/entities/test/Profile";
-import { User } from "src/typeorm/entities/test/User";
 import {DataSource, DataSourceOptions } from "typeorm";
 
 export const dataSourceOptions: DataSourceOptions = {
@@ -29,8 +26,7 @@ export const dataSourceOptions: DataSourceOptions = {
     username:'root',
     password:'',
     database:'chat_bot_cpe',
-    entities:[User,Post,Profile,
-              Admin,Degree,Faq,
+    entities:[Admin,Degree,Faq,
               Feedback,
               Major,Place,Plan,
               Q_And_A,Register,Teacher,
