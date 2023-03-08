@@ -2,22 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { User } from './typeorm/entities/test/User';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { DataSource } from 'typeorm';
 
-import { Profile } from './typeorm/entities/test/Profile';
-import { Post } from './typeorm/entities/test/Post';
-import { Faq } from './typeorm/entities/back_end/FAQ';
-import { Admin } from './typeorm/entities/back_end/Admin';
-import { Degree } from './typeorm/entities/back_end/Degree';
-import { Feedback } from './typeorm/entities/back_end/Feed Back';
-import { Free_Elective } from './typeorm/entities/back_end/Free Elective';
-import { Major } from './typeorm/entities/back_end/Major';
-import { Place } from './typeorm/entities/back_end/Place';
-import { Q_And_A } from './typeorm/entities/back_end/Q&A';
-import { Register } from './typeorm/entities/back_end/Register';
-import { Teacher } from './typeorm/entities/back_end/Teacher';
 import { dataSourceOptions } from 'db/data-source';
 import { DegreeModule } from './api/degree/degree.module';
 import { FaqModule } from './api/faq/faq.module';
@@ -30,11 +16,17 @@ import { RegisterModule } from './api/register/register.module';
 import { TeacherModule } from './api/teacher/teacher.module';
 import { AdminModule } from './api/admin/admin.module';
 import { FreeElectiveModule } from './api/free-elective/free-elective.module';
+import { TeacherKeyModule } from './api/call-by-key/teacher-key/teacher-key.module';
+import { MajorKeyModule } from './api/call-by-key/major-key/major-key.module';
+import { FreeElecKeyModule } from './api/call-by-key/free-elec-key/free-elec-key.module';
+import { PlaceKeyModule } from './api/call-by-key/place-key/place-key.module';
+import { RegisterKeyModule } from './api/call-by-key/register-key/register-key.module';
+import { DegreeKeyModule } from './api/call-by-key/degree-key/degree-key.module';
 
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule, FreeElectiveModule],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), DegreeModule, FaqModule, FeedBackModule, MajorModule, PlaceModule, PlanModule, QaModule, RegisterModule, TeacherModule, AdminModule, FreeElectiveModule, TeacherKeyModule, MajorKeyModule, FreeElecKeyModule, PlaceKeyModule, RegisterKeyModule, DegreeKeyModule],
   controllers: [AppController],
   providers: [AppService],
 })
