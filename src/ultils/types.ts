@@ -60,6 +60,11 @@ export type MajorParam = {
   time: string;
 };
 
+export type TeacherAndPlaceForMajorParam = {
+  name_teacher: string;
+  place: string;
+};
+
 export type PlaceParam = {
   building: string;
   room: string;

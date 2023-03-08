@@ -23,7 +23,7 @@ export class Major{
     term: string;
 
     @ManyToOne(() => Place, {onDelete: "SET NULL", onUpdate: "CASCADE"})
-    place: Place
+    place: number
 
     @Column()
     day  : string;
