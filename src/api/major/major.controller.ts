@@ -1,6 +1,7 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
 import { createTeacher } from 'src/ultils/types';
+import { findKeyDTO } from '../dto_global/findKey.dto';
 import { Free_ElectiveDTO } from '../free-elective/DTO/elective.dto';
 import { PlaceDTO } from '../place/DTO/place.dto';
 import { TeacherDTO } from '../teacher/DTO/teacher.dto';
@@ -19,29 +20,29 @@ export class MajorController {
         return await this.majorService.findMajor()
     }
 
+    @Get('key')
+    async getMajorKey(@Body() findMajor: findKeyDTO){
+        return await this.majorService.findMajorByKey(findMajor.key)
+    }
+
     @Post()
     createMajor(@Body() createMajor: MajorDTO){
         if(createMajor.name != null)
             this.majorService.createMajor(createMajor)
     }
 
-    @Post(':id/place')
-    createPlace(@Param('id', ParseIntPipe) id: number,
-    @Body() createPlace: PlaceDTO){
-        this.majorService.createPlace(id, createPlace)
-    }
+    // @Post(':id/place')
+    // createPlace(@Param('id', ParseIntPipe) id: number,
+    // @Body() createPlace: PlaceDTO){
+    //     this.majorService.createPlace(id, createPlace)
+    // }
 
-    @Post(':id/review')
-    createReview(@Param('id', ParseIntPipe) id: number,
-    @Body() createReview: Free_ElectiveDTO){
-        this.majorService.createReview(id, createReview)
-    }
 
-    @Post(':id/teacher')
-    createTeacher(@Param('id', ParseIntPipe) id: number,
-    @Body() createTeacher: createTeacher){
-        this.majorService.createTeacher(id, createTeacher)
-    }
+    // @Post(':id/teacher')
+    // createTeacher(@Param('id', ParseIntPipe) id: number,
+    // @Body() createTeacher: createTeacher){
+    //     this.majorService.createTeacher(id, createTeacher)
+    // }
 
     @Put(':id')
     editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){

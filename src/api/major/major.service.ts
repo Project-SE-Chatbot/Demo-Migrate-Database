@@ -1,10 +1,8 @@
 import { HttpStatus, Injectable } from '@nestjs/common';
 import { HttpException } from '@nestjs/common/exceptions';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Free_Elective } from 'src/typeorm/entities/back_end/Free Elective';
 import { Major } from 'src/typeorm/entities/back_end/Major';
-import { Place } from 'src/typeorm/entities/back_end/Place';
-import { Teacher } from 'src/typeorm/entities/back_end/Teacher';
+import { Major_Key } from 'src/typeorm/entities/back_end/Major_Key';
 import { createTeacher, ElectiveParam, MajorParam, PlaceParam, TeacherParam } from 'src/ultils/types';
 import { Repository } from 'typeorm';
 
@@ -12,79 +10,53 @@ import { Repository } from 'typeorm';
 export class MajorService {
   constructor(
     @InjectRepository(Major) private majorRepository: Repository<Major>,
-    @InjectRepository(Place) private placeRepository: Repository<Place>,
-    @InjectRepository(Free_Elective) private freeElectRepository: Repository<Free_Elective>,
-    @InjectRepository(Teacher) private teacherRepository: Repository<Teacher>,
+    @InjectRepository(Major_Key) private majorKeyRepository: Repository<Major_Key>,
   ) {}
 
   findMajor() {
-    return this.majorRepository.find({relations: ['place', 'review', 'teacher']});
+    return this.majorRepository.find({relations: ['place', 'teacher']});
+  }
+
+  async findMajorByKey(findKey: string) {
+    console.log(findKey);
+    const findKey1 = await this.majorKeyRepository.find({where: {key_1: findKey}})
+    const findKey2 = await this.majorKeyRepository.find({where: {key_2: findKey}})
+    const findKey3 = await this.majorKeyRepository.find({where: {key_3: findKey}})
+    const findKey4 = await this.majorKeyRepository.find({where: {key_4: findKey}})
+    const findKey5 = await this.majorKeyRepository.find({where: {key_5: findKey}})
+    const findKey6 = await this.majorKeyRepository.find({where: {key_6: findKey}})
+
+    if(findKey1.length != 0){
+      return await this.findMajorByCode(findKey1[0].key_1)
+      
+    }else if(findKey2.length != 0){
+      return await this.findMajorByCode(findKey2[0].key_1)
+      
+    }else if(findKey3.length != 0){
+      console.log(findKey3);
+      
+      return await this.findMajorByCode(findKey3[0].key_1)
+      
+    }else if(findKey4.length != 0){
+      return await this.findMajorByCode(findKey4[0].key_1)
+      
+    }else if(findKey5.length != 0){
+      return await this.findMajorByCode(findKey5[0].key_1)
+      
+    }else if(findKey6.length != 0){
+      return await this.findMajorByCode(findKey6[0].key_1)
+      
+    }
+
+  }
+
+  findMajorByName(name: string){
+    return this.majorRepository.find({ where: {name: name} })
   }
 
   createMajor(majorDetail: MajorParam) {
     const newMajor = this.majorRepository.create(majorDetail);
     return this.majorRepository.save(newMajor);
-  }
-
-  async createPlace(id: number, createPlace: PlaceParam){
-    const major = await this.majorRepository.findOneBy({ id_major: id });
-    if (!major)
-      throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
-    
-    const oldPlace = await this.placeRepository.findOneBy({building: createPlace.building, room: createPlace.room})
-    console.log(oldPlace);
-    
-    var place
-    if (!oldPlace){
-      console.log("Hey");
-      
-      place = this.placeRepository.create(createPlace);
-      const savePlace = await this.placeRepository.save(place);
-      major.place = savePlace;
-      return this.majorRepository.save(major);
-    }
-    else {
-      var savePlace = await this.placeRepository.save(oldPlace);
-      major.place = savePlace;
-      return this.majorRepository.save(major);
-    }
-      
-  }
-
-  async createReview(
-    id: number,
-    createReview: ElectiveParam,
-  ) {
-    const major = await this.majorRepository.findOneBy({ id_major: id });
-    if (!major)
-      throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
-
-    const newReview = this.freeElectRepository.create({...createReview, major});
-    return this.freeElectRepository.save(newReview)
-  }
-
-  async createTeacher(
-    id: number,
-    addTeacher: createTeacher,
-  ) {
-    
-    const nameTeachers = addTeacher.name.split(" / ")
-    console.log(nameTeachers);
-
-    var info = []
-    
-    const major = await this.majorRepository.findOneBy({ id_major: id });
-    if (!major)
-      throw new HttpException('Subject not found', HttpStatus.BAD_REQUEST);
-
-    for(let i = 0; i < nameTeachers.length; ++i){
-      const teacher = await this.teacherRepository.findOne({where: {name: nameTeachers[i]}})
-      info.push(teacher)
-    }
-    console.log(info);
-    major.teacher = info
-    return this.majorRepository.save(major)
-
   }
 
   updateMajor(id_major: number, updateMajor: MajorParam) {
@@ -105,10 +77,6 @@ export class MajorService {
 
   findMajorByCode(id: string) {
     return this.majorRepository.findOne({ where: { course_code: id } });
-  }
-
-  findMajorByName(name: string){
-    return this.majorRepository.findOne({ where: {name: name} })
   }
 
 }
