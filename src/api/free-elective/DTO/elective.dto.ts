@@ -1,4 +1,6 @@
 export class Free_ElectiveDTO {
+  course_code: number;
   name: string;
-  review: string;
+  name_thai: string;
+  link_description: string;
 }
