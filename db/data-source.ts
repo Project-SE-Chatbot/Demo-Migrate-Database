@@ -3,7 +3,6 @@ import { Degree } from "src/typeorm/entities/back_end/Degree";
 import { Degree_Key } from "src/typeorm/entities/back_end/Degree_Key";
 import { Faq } from "src/typeorm/entities/back_end/FAQ";
 import { Feedback } from "src/typeorm/entities/back_end/Feed Back";
-import { Free_Elective } from "src/typeorm/entities/back_end/Free Elective";
 import { Free_Elective_Key } from "src/typeorm/entities/back_end/Free_Elective_Key";
 import { Free_Elective_New } from "src/typeorm/entities/back_end/Free_Elective_New";
 import { Major } from "src/typeorm/entities/back_end/Major";
@@ -28,14 +27,14 @@ export const dataSourceOptions: DataSourceOptions = {
     host: '127.0.0.1',
     port: 3306,
     username:'root',
-    password:'SE404_Cp',
+    password:'',
     database:'chat_bot_cpe',
     entities:[User,Post,Profile,
               Admin,Degree,Faq,
-              Feedback,Free_Elective,
+              Feedback,
               Major,Place,Plan,
               Q_And_A,Register,Teacher,
-              Degree_Key,Free_Elective,
+              Degree_Key,
               Free_Elective_Key,Major_Elective,
               Major_Elective_Key,Major_Key,
               Place_Key,Register_Key,Teacher_Key,
