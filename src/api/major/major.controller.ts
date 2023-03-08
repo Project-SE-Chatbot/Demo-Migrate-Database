@@ -1,11 +1,6 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
-import { createTeacher } from 'src/ultils/types';
 import { findKeyDTO } from '../dto_global/findKey.dto';
-import { Free_ElectiveDTO } from '../free-elective/DTO/elective.dto';
-import { PlaceDTO } from '../place/DTO/place.dto';
-import { TeacherDTO } from '../teacher/DTO/teacher.dto';
-import { createMajorTeacherDTO } from './DTO/createMajorTeacher.dto';
 import { findNameDTO } from './DTO/findName.dto';
 import { MajorDTO } from './DTO/major.dto';
 import { updateMajorDTO } from './DTO/updateMajor.dto';
@@ -30,19 +25,6 @@ export class MajorController {
         if(createMajor.name != null)
             this.majorService.createMajor(createMajor)
     }
-
-    // @Post(':id/place')
-    // createPlace(@Param('id', ParseIntPipe) id: number,
-    // @Body() createPlace: PlaceDTO){
-    //     this.majorService.createPlace(id, createPlace)
-    // }
-
-
-    // @Post(':id/teacher')
-    // createTeacher(@Param('id', ParseIntPipe) id: number,
-    // @Body() createTeacher: createTeacher){
-    //     this.majorService.createTeacher(id, createTeacher)
-    // }
 
     @Put(':id')
     editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){
