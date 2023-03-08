@@ -2,6 +2,7 @@ export class TeacherDTO {
   name: string
   picture: string;
   location: string;
-  address: string;
+  email: string;
   time: string;
+  link: string
 }

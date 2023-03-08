@@ -8,15 +8,10 @@ export class Degree{
     id_degree : number;
 
     @Column()
-    time : string;
-
-    @Column()
-    Amount : string;
+    name : string;
 
     @Column()
     link : string;
 
-    @ManyToOne(() => Register, (register) => register.info, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    register: Register
 
 }

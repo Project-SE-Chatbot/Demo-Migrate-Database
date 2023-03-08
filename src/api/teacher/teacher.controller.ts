@@ -1,5 +1,6 @@
 import { Controller, Delete, Get, ParseIntPipe, Put } from '@nestjs/common';
 import { Body, Param, Post } from '@nestjs/common/decorators';
+import { findKeyDTO } from '../dto_global/findKey.dto';
 import { findNameDTO } from './DTO/findName.dto';
 import { TeacherDTO } from './DTO/teacher.dto';
 import { updateTeacherDTO } from './DTO/updateTeacher.dto';
@@ -12,6 +13,11 @@ export class TeacherController {
     @Get()
     async getTeacher(){
         return await this.teacherService.findTeacher()
+    }
+
+    @Get('key')
+    async getTeacherKey(@Body() findTeacher: findKeyDTO){
+        return await this.teacherService.findTeacherByKey(findTeacher.key)
     }
 
     @Post()

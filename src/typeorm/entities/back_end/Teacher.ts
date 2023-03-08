@@ -18,13 +18,12 @@ export class Teacher{
     location: string;
 
     @Column()
-    address : string;
+    email : string;
 
     @Column()
     time  : string;
-    
-    @ManyToMany(() => Major, (major) => major.teacher, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    @JoinTable()
-    major: Major[]
+
+    @Column()
+    link : string;
 
 }
