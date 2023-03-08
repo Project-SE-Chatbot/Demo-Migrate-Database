@@ -13,7 +13,5 @@ export class Degree{
     @Column()
     link : string;
 
-    @ManyToOne(() => Register, {onDelete: "CASCADE", onUpdate: "CASCADE"})
-    register: number
 
 }

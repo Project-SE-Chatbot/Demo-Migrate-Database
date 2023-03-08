@@ -1,5 +1,4 @@
 import {  Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
-import { Degree } from "./Degree";
 
 @Entity({name: 'register'})
 
@@ -9,7 +8,7 @@ export class Register {
     id_register  : number;
 
     @Column()
-    name : string;
+    name : string;  
 
     @Column()
     link : string;

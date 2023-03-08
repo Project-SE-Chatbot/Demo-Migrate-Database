@@ -114,3 +114,9 @@ export type findKeyType = {
   key: string;
 }
 
+export type majorElectiveType  = {
+  course_code: string;
+  name: string;
+  link_description: string;
+}
+
