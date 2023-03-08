@@ -46,8 +46,10 @@ export type FeedbackParam = {
 };
 
 export type ElectiveParam = {
+  course_code: number;
   name: string;
-  review: string;
+  name_thai: string;
+  link_description: string;
 };
 
 export type MajorParam = {
@@ -78,10 +80,12 @@ export type RegisterParam = {
 };
 
 export type TeacherParam = {
+  name: string
   picture: string;
   location: string;
-  address: string;
+  email: string;
   time: string;
+  link: string
 }
 
 export type findPlace = {
@@ -91,3 +95,22 @@ export type findPlace = {
 export type createTeacher = {
   name: string
 }
+
+export type keyType = {
+  key_1: string;
+
+  key_2: string;
+
+  key_3: string;
+
+  key_4: string;
+
+  key_5: string;
+
+  key_6: string;
+}
+
+export type findKeyType = {
+  key: string;
+}
+
