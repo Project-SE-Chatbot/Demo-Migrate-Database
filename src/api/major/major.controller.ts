@@ -1,6 +1,7 @@
 import { Controller, Get, ParseIntPipe } from '@nestjs/common';
 import { Body, Delete, Param, Post, Put } from '@nestjs/common/decorators';
 import { findKeyDTO } from '../dto_global/findKey.dto';
+import { TeacherAndPlaceForMajorDTO } from './DTO/createMajorTeacher.dto';
 import { findNameDTO } from './DTO/findName.dto';
 import { MajorDTO } from './DTO/major.dto';
 import { updateMajorDTO } from './DTO/updateMajor.dto';
@@ -27,16 +28,14 @@ export class MajorController {
     }
 
     @Put('edit')
-    editTeacherAndPlace(@Body() updateMajor: updateMajorDTO ){
-        console.log(0);
-        
-        this.majorService.configTeacherANDPlaceMajor(updateMajor)
+    editTeacherAndPlace(@Body() updateTeacherAndPlaceMajor: TeacherAndPlaceForMajorDTO ){  
+        this.majorService.configTeacherANDPlaceMajor(updateTeacherAndPlaceMajor)
     }
 
-    // @Put(':id')
-    // editMajor(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO ){
-    //     this.majorService.updateMajor(id, updateMajor)
-    // }
+    @Put(':id')
+    editPlace(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO){
+        this.majorService.updateMajor(id, updateMajor)
+    }
 
     @Delete(':id')
     deleteMajorByID(@Param('id', ParseIntPipe) id: number){
@@ -56,10 +55,5 @@ export class MajorController {
     @Get(':code')
     async findMajorByCode(@Param('code') code: string){
         return await this.majorService.findMajorByCode(code)
-    }
-
-    @Get('place')
-    async findMajorByName(@Body() findName: findNameDTO){
-        return await this.majorService.findMajorByName(findName.name)
     }
 }

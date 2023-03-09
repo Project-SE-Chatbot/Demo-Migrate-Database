@@ -31,39 +31,21 @@ export class RegisterService {
     const findKey6 = await this.registerKeyRepository.find({where: {key_6: findKey}})
 
     if(findKey1.length != 0){
-      if(findKey1[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey1[0].key_1)
       
     }else if(findKey2.length != 0){
-      if(findKey2[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey2[0].key_1)
       
     }else if(findKey3.length != 0){
-      if(findKey3[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey3[0].key_1)
       
     }else if(findKey4.length != 0){
-      if(findKey4[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey4[0].key_1)
       
     }else if(findKey5.length != 0){
-      if(findKey5[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey5[0].key_1)
       
     }else if(findKey6.length != 0){
-      if(findKey6[0].key_1 == 'วิศวะคอม TCAS66'){
-        return await this.findRegister()
-      }
       return await this.findRegisterByName(findKey6[0].key_1)
       
     }
