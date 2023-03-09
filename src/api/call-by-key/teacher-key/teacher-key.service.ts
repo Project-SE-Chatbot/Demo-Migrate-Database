@@ -11,7 +11,6 @@ export class TeacherKeyService {
   constructor(
     @InjectRepository(Teacher_Key)
     private teacherKeyRepository: Repository<Teacher_Key>,
-    @InjectRepository(Teacher) private teacherRepository: Repository<Teacher>,
   ) {}
 
   async findTeacherKey() {
