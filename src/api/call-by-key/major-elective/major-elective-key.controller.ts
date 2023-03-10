@@ -1,11 +1,11 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { keyDTO } from 'src/api/dto_global/key.dto';
-import { MajorElectiveService } from './major-elective.service';
+import { MajorElectiveKeyService } from './major-elective-key.service';
 
-@Controller('major-elective')
-export class MajorElectiveController {
+@Controller('major-elec-key')
+export class MajorElectiveKeyController {
 
-    constructor(private majorElecKey: MajorElectiveService) {}
+    constructor(private majorElecKey: MajorElectiveKeyService) {}
 
   @Get()
   async getMajorElecKey() {

@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { MajorElectiveController } from './major-elective.controller';
+import { MajorElectiveKeyController } from './major-elective-key.controller';
 
 describe('MajorElectiveController', () => {
-  let controller: MajorElectiveController;
+  let controller: MajorElectiveKeyController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [MajorElectiveController],
+      controllers: [MajorElectiveKeyController],
     }).compile();
 
-    controller = module.get<MajorElectiveController>(MajorElectiveController);
+    controller = module.get<MajorElectiveKeyController>(MajorElectiveKeyController);
   });
 
   it('should be defined', () => {

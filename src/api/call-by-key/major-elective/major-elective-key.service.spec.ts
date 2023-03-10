@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { MajorElectiveService } from './major-elective.service';
+import { MajorElectiveKeyService } from './major-elective-key.service';
 
 describe('MajorElectiveService', () => {
-  let service: MajorElectiveService;
+  let service: MajorElectiveKeyService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [MajorElectiveService],
+      providers: [MajorElectiveKeyService],
     }).compile();
 
-    service = module.get<MajorElectiveService>(MajorElectiveService);
+    service = module.get<MajorElectiveKeyService>(MajorElectiveKeyService);
   });
 
   it('should be defined', () => {

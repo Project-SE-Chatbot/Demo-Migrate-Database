@@ -5,7 +5,7 @@ import { keyType } from 'src/ultils/types';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class MajorElectiveService {
+export class MajorElectiveKeyService {
   constructor(
     @InjectRepository(Major_Elective_Key)
     private majorElecKeyRepository: Repository<Major_Elective_Key>,
