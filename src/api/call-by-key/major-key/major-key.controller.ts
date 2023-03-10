@@ -11,6 +11,11 @@ export class MajorKeyController {
     return await this.majorKey.findMajorKey();
   }
 
+  @Get(':course_code')
+  async getMajorKeyByCode(@Param('course_code') course_code: string) {
+    return await this.majorKey.findMajorKeyByCode(course_code);
+  }
+
   @Post()
   createMajorKey(@Body() createMajor: keyDTO) {
     this.majorKey.createMajorKey(createMajor);

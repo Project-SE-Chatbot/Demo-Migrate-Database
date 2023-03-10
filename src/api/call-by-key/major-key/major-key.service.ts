@@ -15,6 +15,10 @@ export class MajorKeyService {
     return this.majorKeyRepository.find();
   }
 
+  findMajorKeyByCode(code_course: string) {
+    return this.majorKeyRepository.findOne({where: {key_1: code_course}});
+  }
+
   createMajorKey(majorKeyDetail: keyType) {
     const newMajorKey = this.majorKeyRepository.create(majorKeyDetail);
     return this.majorKeyRepository.save(newMajorKey);
