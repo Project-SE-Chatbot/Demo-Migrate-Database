@@ -15,20 +15,24 @@ export class PlaceKeyService {
     return this.PlaceKeyRepository.find();
   }
 
+  async findPlaceKeyByCode(key: string) {
+    return await this.PlaceKeyRepository.findOne({where: {key_1: key}});
+  }
+
   createPlaceKey(placeKeyDetail: keyType) {
     const newPlaceKey = this.PlaceKeyRepository.create(placeKeyDetail);
     return this.PlaceKeyRepository.save(newPlaceKey);
   }
 
-  updatePlaceKey(id_place_key: number, updatePlaceKey: keyType) {
+  updatePlaceKey(key_1: string, updatePlaceKey: keyType) {
     return this.PlaceKeyRepository.update(
-      { id_place_key },
+      { key_1 },
       { ...updatePlaceKey },
     );
   }
 
-  deletePlaceKey(id_place_key: number) {
-    return this.PlaceKeyRepository.delete({ id_place_key });
+  deletePlaceKey(key_1: string) {
+    return this.PlaceKeyRepository.delete({ key_1 });
   }
 
   deletePlaceAllKey() {

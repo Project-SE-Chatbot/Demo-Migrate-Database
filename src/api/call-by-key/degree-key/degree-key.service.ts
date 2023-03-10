@@ -15,20 +15,24 @@ export class DegreeKeyService {
     return this.degreeKeyRepository.find();
   }
 
+  async findDegreeKeyByCode(key: string) {
+    return await this.degreeKeyRepository.findOne({where: {key_1: key}});
+  }
+
   createDegreeKey(degreeKeyDetail: keyType) {
     const newDegreeKey = this.degreeKeyRepository.create(degreeKeyDetail);
     return this.degreeKeyRepository.save(newDegreeKey);
   }
 
-  updateDegreeKey(id_degree_key: number, updateDegreeKey: keyType) {
+  updateDegreeKey(key_1: string, updateDegreeKey: keyType) {
     return this.degreeKeyRepository.update(
-      { id_degree_key },
+      { key_1 },
       { ...updateDegreeKey },
     );
   }
 
-  deleteDegreeKey(id_degree_key: number) {
-    return this.degreeKeyRepository.delete({ id_degree_key });
+  deleteDegreeKey(key_1: string) {
+    return this.degreeKeyRepository.delete({ key_1 });
   }
 
   deleteDegreeAllKey() {

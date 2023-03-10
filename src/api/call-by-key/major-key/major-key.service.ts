@@ -15,8 +15,8 @@ export class MajorKeyService {
     return this.majorKeyRepository.find();
   }
 
-  findMajorKeyByCode(code_course: string) {
-    return this.majorKeyRepository.findOne({where: {key_1: code_course}});
+  async findMajorKeyByCode(code_course: string) {
+    return await this.majorKeyRepository.findOne({where: {key_1: code_course}});
   }
 
   createMajorKey(majorKeyDetail: keyType) {
@@ -24,15 +24,15 @@ export class MajorKeyService {
     return this.majorKeyRepository.save(newMajorKey);
   }
 
-  updateMajorKey(id_major_key: number, updateMajorKey: keyType) {
+  updateMajorKey(key_1: string, updateMajorKey: keyType) {
     return this.majorKeyRepository.update(
-      { id_major_key },
+      { key_1 },
       { ...updateMajorKey },
     );
   }
 
-  deleteMajorKey(id_major_key: number) {
-    return this.majorKeyRepository.delete({ id_major_key });
+  deleteMajorKey(key_1: string) {
+    return this.majorKeyRepository.delete({ key_1 });
   }
 
   deleteMajorAllKey() {

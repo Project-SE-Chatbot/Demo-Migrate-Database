@@ -6,15 +6,17 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class RegisterKeyService {
-
-    constructor(
+  constructor(
     @InjectRepository(Register_Key)
     private registerKeyRepository: Repository<Register_Key>,
   ) {}
 
-    findRegisterKey() {
-    
+  findRegisterKey() {
     return this.registerKeyRepository.find();
+  }
+
+  async findRegisterKeyByCode(key: string) {
+    return await this.registerKeyRepository.findOne({ where: { key_1: key } });
   }
 
   createRegisterKey(registerKeyDetail: keyType) {
@@ -22,15 +24,15 @@ export class RegisterKeyService {
     return this.registerKeyRepository.save(newRegisterKey);
   }
 
-  updateRegisterKey(id_register_key: number, updateRegisterKey: keyType) {
+  updateRegisterKey(key_1: string, updateRegisterKey: keyType) {
     return this.registerKeyRepository.update(
-      { id_register_key },
+      { key_1 },
       { ...updateRegisterKey },
     );
   }
 
-  deleteRegisterKey(id_register_key: number) {
-    return this.registerKeyRepository.delete({ id_register_key });
+  deleteRegisterKey(key_1: string) {
+    return this.registerKeyRepository.delete({ key_1 });
   }
 
   deleteRegisterAllKey() {

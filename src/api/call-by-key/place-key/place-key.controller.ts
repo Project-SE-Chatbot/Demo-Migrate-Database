@@ -20,22 +20,27 @@ export class PlaceKeyController {
     return await this.placeKey.findPlaceKey();
   }
 
+  @Get(':key')
+  async getPlaceKeyByCode(@Param('key') key: string) {
+    return await this.placeKey.findPlaceKeyByCode(key);
+  }
+
   @Post()
   createPlaceKey(@Body() createPlace: keyDTO) {
     this.placeKey.createPlaceKey(createPlace);
   }
 
-  @Put(':id')
+  @Put(':key')
   editPlaceKey(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('key', ParseIntPipe) key: string,
     @Body() updatePlace: keyDTO,
   ) {
-    this.placeKey.updatePlaceKey(id, updatePlace);
+    this.placeKey.updatePlaceKey(key, updatePlace);
   }
 
-  @Delete(':id')
-  deletePlaceKeyByID(@Param('id', ParseIntPipe) id: number) {
-    this.placeKey.deletePlaceKey(id);
+  @Delete(':key')
+  deletePlaceKeyBykey(@Param('key') key: string) {
+    this.placeKey.deletePlaceKey(key);
   }
 
   @Delete()

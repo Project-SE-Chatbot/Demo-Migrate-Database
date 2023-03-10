@@ -14,8 +14,11 @@ export class TeacherKeyService {
   ) {}
 
   async findTeacherKey() {
-    
     return this.teacherKeyRepository.find();
+  }
+
+  async findTeacherKeyByCode(key: string) {
+    return await this.teacherKeyRepository.findOne({where: {key_1: key}});
   }
 
   createTeacherKey(teacherKeyDetail: keyType) {
@@ -23,15 +26,15 @@ export class TeacherKeyService {
     return this.teacherKeyRepository.save(newTeacherKey);
   }
 
-  updateTeacherKey(id_teacher_key: number, updateTeacherKey: keyType) {
+  updateTeacherKey(key_1: string, updateTeacherKey: keyType) {
     return this.teacherKeyRepository.update(
-      { id_teacher_key },
+      { key_1 },
       { ...updateTeacherKey },
     );
   }
 
-  deleteTeacherKey(id_teacher_key: number) {
-    return this.teacherKeyRepository.delete({ id_teacher_key });
+  deleteTeacherKey(key_1: string) {
+    return this.teacherKeyRepository.delete({ key_1 });
   }
 
   deleteTeacherAllKey() {

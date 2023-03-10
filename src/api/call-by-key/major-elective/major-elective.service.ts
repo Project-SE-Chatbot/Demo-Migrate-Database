@@ -6,33 +6,39 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class MajorElectiveService {
+  constructor(
+    @InjectRepository(Major_Elective_Key)
+    private majorElecKeyRepository: Repository<Major_Elective_Key>,
+  ) {}
 
-    constructor(
-        @InjectRepository(Major_Elective_Key)
-        private majorElecKeyRepository: Repository<Major_Elective_Key>,
-      ) {}
-    
-      findMajorElecKey() {
-        return this.majorElecKeyRepository.find();
-      }
-    
-      createMajorEleKey(majorElecKeyDetail: keyType) {
-        const newDegreeKey = this.majorElecKeyRepository.create(majorElecKeyDetail);
-        return this.majorElecKeyRepository.save(newDegreeKey);
-      }
-    
-      updateMajorEleKey(id_major_elective_key: number, updateMajorElecKey: keyType) {
-        return this.majorElecKeyRepository.update(
-          { id_major_elective_key },
-          { ...updateMajorElecKey },
-        );
-      }
-    
-      deleteMajorEleKey(id_major_elective_key: number) {
-        return this.majorElecKeyRepository.delete({ id_major_elective_key });
-      }
-    
-      deleteMajorEleAllKey() {
-        return this.majorElecKeyRepository.clear();
-      }
+  findMajorElecKey() {
+    return this.majorElecKeyRepository.find();
+  }
+
+  async findMajorElecKeyByCode(key: string) {
+    return await this.majorElecKeyRepository.findOne({ where: { key_1: key } });
+  }
+
+  createMajorEleKey(majorElecKeyDetail: keyType) {
+    const newDegreeKey = this.majorElecKeyRepository.create(majorElecKeyDetail);
+    return this.majorElecKeyRepository.save(newDegreeKey);
+  }
+
+  updateMajorEleKey(
+    key_1: string,
+    updateMajorElecKey: keyType,
+  ) {
+    return this.majorElecKeyRepository.update(
+      { key_1 },
+      { ...updateMajorElecKey },
+    );
+  }
+
+  deleteMajorEleKey(key_1: string) {
+    return this.majorElecKeyRepository.delete({ key_1 });
+  }
+
+  deleteMajorEleAllKey() {
+    return this.majorElecKeyRepository.clear();
+  }
 }

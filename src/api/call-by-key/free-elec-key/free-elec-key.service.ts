@@ -16,20 +16,24 @@ export class FreeElecKeyService {
     return this.freeELecKeyRepository.find();
   }
 
+  async findFreeElecKeyByCode(key: string) {
+    return await this.freeELecKeyRepository.findOne({where: {key_1: key}});
+  }
+
   createFreeElecKey(freeElecKeyDetail: keyType) {
     const newFreeElecKey = this.freeELecKeyRepository.create(freeElecKeyDetail);
     return this.freeELecKeyRepository.save(newFreeElecKey);
   }
 
-  updateFreeElecKey(id_free_elective_key: number, updateFreeElecKey: keyType) {
+  updateFreeElecKey(key_1: string, updateFreeElecKey: keyType) {
     return this.freeELecKeyRepository.update(
-      { id_free_elective_key },
+      { key_1 },
       { ...updateFreeElecKey },
     );
   }
 
-  deleteFreeElecKey(id_free_elective_key: number) {
-    return this.freeELecKeyRepository.delete({ id_free_elective_key });
+  deleteFreeElecKey(key_1: string) {
+    return this.freeELecKeyRepository.delete({ key_1 });
   }
 
   deleteFreeElecAllKey() {

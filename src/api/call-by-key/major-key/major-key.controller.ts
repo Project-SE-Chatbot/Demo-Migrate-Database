@@ -21,17 +21,17 @@ export class MajorKeyController {
     this.majorKey.createMajorKey(createMajor);
   }
 
-  @Put(':id')
+  @Put(':key')
   editMajorKey(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('key') key: string,
     @Body() updateMajor: keyDTO,
   ) {
-    this.majorKey.updateMajorKey(id, updateMajor);
+    this.majorKey.updateMajorKey(key, updateMajor);
   }
 
-  @Delete(':id')
-  deleteMajorKeyByID(@Param('id', ParseIntPipe) id: number) {
-    this.majorKey.deleteMajorKey(id);
+  @Delete(':key')
+  deleteMajorKeyBykey(@Param('key') key: string) {
+    this.majorKey.deleteMajorKey(key);
   }
 
   @Delete()

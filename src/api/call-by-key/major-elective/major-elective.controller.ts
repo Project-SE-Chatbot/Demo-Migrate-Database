@@ -12,22 +12,27 @@ export class MajorElectiveController {
     return await this.majorElecKey.findMajorElecKey();
   }
 
+  @Get(':key')
+  async getMajorElecKeyByCode(@Param('key') key: string) {
+    return await this.majorElecKey.findMajorElecKeyByCode(key);
+  }
+
   @Post()
   createMajorElecKey(@Body() createMajorElec: keyDTO) {
     this.majorElecKey.createMajorEleKey(createMajorElec);
   }
 
-  @Put(':id')
+  @Put(':key')
   editMajorElecKey(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('key') key: string,
     @Body() updateMajorElec: keyDTO,
   ) {
-    this.majorElecKey.updateMajorEleKey(id, updateMajorElec);
+    this.majorElecKey.updateMajorEleKey(key, updateMajorElec);
   }
 
-  @Delete(':id')
-  deleteMajorElecKeyByID(@Param('id', ParseIntPipe) id: number) {
-    this.majorElecKey.deleteMajorEleKey(id);
+  @Delete(':key')
+  deleteMajorElecKeyBykey(@Param('key') key: string) {
+    this.majorElecKey.deleteMajorEleKey(key);
   }
 
   @Delete()

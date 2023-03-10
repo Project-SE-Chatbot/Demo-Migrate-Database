@@ -20,22 +20,27 @@ export class DegreeKeyController {
     return await this.degreeKey.findDegreeKey();
   }
 
+  @Get(':key')
+  async getMajorKeyByCode(@Param('key') key: string) {
+    return await this.degreeKey.findDegreeKeyByCode(key);
+  }
+
   @Post()
   createDegreeKey(@Body() createDegree: keyDTO) {
     this.degreeKey.createDegreeKey(createDegree);
   }
 
-  @Put(':id')
+  @Put(':key')
   editDegreeKey(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('key') key: string,
     @Body() updateDegree: keyDTO,
   ) {
-    this.degreeKey.updateDegreeKey(id, updateDegree);
+    this.degreeKey.updateDegreeKey(key, updateDegree);
   }
 
-  @Delete(':id')
-  deleteDegreeKeyByID(@Param('id', ParseIntPipe) id: number) {
-    this.degreeKey.deleteDegreeKey(id);
+  @Delete(':key')
+  deleteDegreeKeyBykey(@Param('key') key: string) {
+    this.degreeKey.deleteDegreeKey(key);
   }
 
   @Delete()

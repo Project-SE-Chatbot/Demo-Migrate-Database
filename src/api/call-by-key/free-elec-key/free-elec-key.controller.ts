@@ -12,22 +12,27 @@ export class FreeElecKeyController {
     return await this.freeElecKey.findFreeElecKey();
   }
 
+  @Get(':key')
+  async getMajorKeyByCode(@Param('key') key: string) {
+    return await this.freeElecKey.findFreeElecKeyByCode(key);
+  }
+
   @Post()
   createFreeElecKey(@Body() createFreeElec: keyDTO) {
     this.freeElecKey.createFreeElecKey(createFreeElec);
   }
 
-  @Put(':id')
+  @Put(':key')
   editFreeElecKey(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('key') key: string,
     @Body() updateFreeElec: keyDTO,
   ) {
-    this.freeElecKey.updateFreeElecKey(id, updateFreeElec);
+    this.freeElecKey.updateFreeElecKey(key, updateFreeElec);
   }
 
-  @Delete(':id')
-  deleteFreeElecKeyByID(@Param('id', ParseIntPipe) id: number) {
-    this.freeElecKey.deleteFreeElecKey(id);
+  @Delete(':key')
+  deleteFreeElecKeyBykey(@Param('key') key: string) {
+    this.freeElecKey.deleteFreeElecKey(key);
   }
 
   @Delete()
