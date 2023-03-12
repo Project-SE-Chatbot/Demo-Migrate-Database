@@ -87,6 +87,6 @@ export class TeacherService {
   }
 
   findTeacherByName(name: string){
-    return this.teacherRepository.find({where: {name: name}})
+    return this.teacherRepository.findOne({where: {name: name}})
   }
 }
