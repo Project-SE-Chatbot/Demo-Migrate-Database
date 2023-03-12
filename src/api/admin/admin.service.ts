@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Admin } from 'src/typeorm/entities/back_end/Admin';
 import { AdminParam } from 'src/ultils/types';
@@ -13,6 +13,15 @@ export class AdminService {
 
     findAdmin(){
         return this.adminRepository.find()
+    }
+
+    login(login: AdminParam){
+        const loginAdmin = this.adminRepository.findOne({where: {name: login.name, password: login.password}})
+        if (!loginAdmin)
+            throw new HttpException('Admin not found', HttpStatus.BAD_REQUEST)
+        else
+            throw new HttpException('Login Success', HttpStatus.OK)
+      
     }
 
     createAdmin(adminDetail: AdminParam){
