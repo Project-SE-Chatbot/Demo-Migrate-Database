@@ -82,12 +82,12 @@ export class MajorService {
     return this.majorRepository.save(newMajor);
   }
 
-  async updateMajor(id_major: number, updateMajor: MajorParam) {
-    const major = await this.majorRepository.findOneBy({ id_major });
+  async updateMajor(course_code: string, updateMajor: MajorParam) {
+    const major = await this.majorRepository.findOneBy({ course_code });
     if (!major)
       throw new HttpException('Major not found', HttpStatus.BAD_REQUEST);
 
-    return this.majorRepository.update({ id_major }, { ...updateMajor });
+    return this.majorRepository.update({ course_code }, { ...updateMajor });
   }
 
   async configTeacherANDPlaceMajor(update: TeacherAndPlaceForMajorParam,) {

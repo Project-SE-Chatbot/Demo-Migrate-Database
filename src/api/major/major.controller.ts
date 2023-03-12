@@ -32,9 +32,9 @@ export class MajorController {
         this.majorService.configTeacherANDPlaceMajor(updateTeacherAndPlaceMajor)
     }
 
-    @Put(':id')
-    editPlace(@Param('id', ParseIntPipe) id: number, @Body() updateMajor: updateMajorDTO){
-        this.majorService.updateMajor(id, updateMajor)
+    @Put(':course_code')
+    editPlace(@Param('course_code') course_code: string, @Body() updateMajor: updateMajorDTO){
+        this.majorService.updateMajor(course_code, updateMajor)
     }
 
     @Delete(':id')
