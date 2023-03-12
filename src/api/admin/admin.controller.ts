@@ -12,7 +12,7 @@ export class AdminController {
     return await this.adminService.findAdmin();
   }
 
-  @Get()
+  @Get("login")
   async loginAdmin(@Body() createAdmin: AdminDTO) {
     return await this.adminService.login(createAdmin);
   }
