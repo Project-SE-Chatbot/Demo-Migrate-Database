@@ -70,8 +70,8 @@ export class PlaceService {
     return this.placeRepository.save(newPlace);
   }
 
-  updatePlace(id_place: number, updatePlace: PlaceParam) {
-    return this.placeRepository.update({ id_place }, { ...updatePlace });
+  updatePlace(room: string, updatePlace: PlaceParam) {
+    return this.placeRepository.update({ room }, { ...updatePlace });
   }
 
   deletePlace(id_place: number) {

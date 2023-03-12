@@ -1,3 +1,5 @@
 export class RegisterDTO {
-  degree: string;
+  name : string;  
+  link : string;
+  tcas_round : string;
 }

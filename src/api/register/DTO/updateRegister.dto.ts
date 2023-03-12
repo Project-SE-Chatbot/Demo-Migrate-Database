@@ -1,4 +1,6 @@
 export class updateRegisterDTO {
-    degree: string;
+    name : string;  
+    link : string;
+    tcas_round : string;
 }
   

@@ -53,7 +53,7 @@ export class RegisterService {
   }
 
   async createReg(regDetail: RegisterParam) {
-    const register = await this.registerRepository.findOneBy({ degree: regDetail.degree });
+    const register = await this.registerRepository.findOneBy({ name: regDetail.name });
     if(register) 
       return new HttpException("Have this degree", HttpStatus.BAD_REQUEST)
     const newReg = this.registerRepository.create(regDetail);
@@ -61,13 +61,13 @@ export class RegisterService {
   }
 
 
-  updateRegister(id_register: number, updateRegister: RegisterParam) {
+  updateRegister(name: string, updateRegister: RegisterParam) {
     
-    return this.registerRepository.update({ id_register }, { ...updateRegister });
+    return this.registerRepository.update({ name }, { ...updateRegister });
   }
 
-  deleteRegister(id_register: number) {
-    return this.registerRepository.delete({ id_register });
+  deleteRegister(name: string) {
+    return this.registerRepository.delete({ name });
   }
 
   findRegisterByName(name: string) {

@@ -16,7 +16,4 @@ export class Register {
     @Column()
     tcas_round : string;
 
-    @Column({unique: true})
-    degree : string;
-
 }

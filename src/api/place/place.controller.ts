@@ -30,9 +30,9 @@ export class PlaceController {
     //     return this.placeService.findPlaceByName(findPlace.room)
     // }
 
-    @Put(':id')
-    editPlace(@Param('id', ParseIntPipe) id: number, @Body() updatePlace: updatePlaceDTO){
-        this.placeService.updatePlace(id, updatePlace)
+    @Put('room')
+    editPlace(@Body() updatePlace: updatePlaceDTO){
+        this.placeService.updatePlace(updatePlace.room, updatePlace)
     }
 
     @Delete(':id')

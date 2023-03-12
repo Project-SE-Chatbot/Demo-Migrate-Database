@@ -82,7 +82,9 @@ export type Q_And_AParam = {
 };
 
 export type RegisterParam = {
-  degree: string;
+  name : string;  
+  link : string;
+  tcas_round : string;
 };
 
 export type TeacherParam = {

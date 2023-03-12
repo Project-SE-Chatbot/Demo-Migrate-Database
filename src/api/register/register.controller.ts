@@ -34,21 +34,21 @@ export class RegisterController {
   }
 
 
-  @Put(':id')
+  @Put(':name')
   editRegister(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('name', ParseIntPipe) name: string,
     @Body() updateRegister: updateRegisterDTO,
   ) {
-    this.registerService.updateRegister(id, updateRegister);
+    this.registerService.updateRegister(name, updateRegister);
   }
 
   @Delete(':id')
-  deleteRegisterByID(@Param('id', ParseIntPipe) id: number) {
-    this.registerService.deleteRegister(id);
+  deleteRegisterByID(@Param('name', ParseIntPipe) name: string) {
+    this.registerService.deleteRegister(name);
   }
 
-  // @Get(':id')
-  // async findRegisterByID(@Param('id', ParseIntPipe) id: number){
-  //   return await this.registerService.findRegisterByID(id)
-  // }
+  @Get(':name')
+  async findRegisterByID(@Param('name', ParseIntPipe) name: string){
+    return await this.registerService.findRegisterByName(name)
+  }
 }
