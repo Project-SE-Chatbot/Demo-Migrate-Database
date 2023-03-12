@@ -73,15 +73,15 @@ export class FreeElectiveService {
     return this.free_electiveRepository.save(newElective);
   }
 
-  updateElective(id_free_elective: number, updateElective: ElectiveParam) {
+  updateElective(course_code: number, updateElective: ElectiveParam) {
     return this.free_electiveRepository.update(
-      { id_free_elective },
+      { course_code },
       { ...updateElective },
     );
   }
 
-  deleteElective(id_free_elective: number) {
-    return this.free_electiveRepository.delete({ id_free_elective });
+  deleteElective(course_code: number) {
+    return this.free_electiveRepository.delete({ course_code });
   }
 
   findElectiveByCourseCode(course_code: number) {

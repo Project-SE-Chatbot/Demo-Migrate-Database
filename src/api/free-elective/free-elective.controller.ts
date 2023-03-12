@@ -24,18 +24,18 @@ export class FreeElectiveController {
         this.electiveService.createElective(createElective)
     }
 
-    @Put(':id')
-    editElective(@Param('id', ParseIntPipe) id: number, @Body() updateElective: updateFree_ElectiveDTO ){
-        this.electiveService.updateElective(id, updateElective)
+    @Put(':course_code')
+    editElective(@Param('course_code') course_code: string, @Body() updateElective: updateFree_ElectiveDTO ){
+        this.electiveService.updateElective(parseInt(course_code), updateElective)
     }
 
-    @Delete(':id')
-    deleteElectiveByID(@Param('id', ParseIntPipe) id: number){
-        this.electiveService.deleteElective(id)
+    @Delete(':course_code')
+    deleteElectiveByID(@Param('course_code') course_code: string){
+        this.electiveService.deleteElective(parseInt(course_code))
     }
 
-    @Get(':id')
-    async findElectiveByID(@Param('id', ParseIntPipe) id: number){
-        return await this.electiveService.findElectiveByCourseCode(id)
+    @Get(':course_code')
+    async findElectiveByID(@Param('course_code') course_code: string){
+        return await this.electiveService.findElectiveByCourseCode(parseInt(course_code))
     }
 }
