@@ -28,18 +28,18 @@ export class MajorElectiveController {
     //     return this.placeService.findPlaceByName(findPlace.room)
     // }
 
-    @Put(':id')
-    editPlace(@Param('id', ParseIntPipe) id: number, @Body() updatePlace: majorElectiveDTO){
-        this.majorElectiveService.updateMajorElective(id, updatePlace)
+    @Put(':course_code')
+    editPlace(@Param('course_code') course_code: string, @Body() updatePlace: majorElectiveDTO){
+        this.majorElectiveService.updateMajorElective(course_code, updatePlace)
     }
 
-    @Delete(':id')
-    deletePlaceByID(@Param('id', ParseIntPipe) id: number){
-        this.majorElectiveService.deleteMajorElective(id)
+    @Delete(':course_code')
+    deletePlaceByID(@Param('course_code') course_code: string){
+        this.majorElectiveService.deleteMajorElective(course_code)
     }
 
-    // @Get(':id')
-    // async findPlaceByID(@Param('id', ParseIntPipe) id: number){
-    //     return await this.majorElectiveService.find(id)
-    // }
+    @Get(':course_code')
+    async findPlaceByID(@Param('course_code') course_code: string){
+        return await this.majorElectiveService.findMajorElectiveByName(course_code)
+    }
 }

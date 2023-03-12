@@ -71,12 +71,12 @@ export class MajorElectiveService {
         return this.majorElectiveRepository.save(newMajorElec)
     }
 
-    updateMajorElective(id_major_elective: number, updateDegree: majorElectiveType){
-        return this.majorElectiveRepository.update({id_major_elective}, {...updateDegree})
+    updateMajorElective(course_code: string, updateDegree: majorElectiveType){
+        return this.majorElectiveRepository.update({course_code}, {...updateDegree})
     }
 
-    deleteMajorElective(id_major_elective: number){
-        return this.majorElectiveRepository.delete({id_major_elective})
+    deleteMajorElective(course_code: string){
+        return this.majorElectiveRepository.delete({course_code})
     }
 
     findMajorElectiveByName(course_code: string){
