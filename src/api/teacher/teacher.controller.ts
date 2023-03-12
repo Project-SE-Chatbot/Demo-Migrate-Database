@@ -35,10 +35,10 @@ export class TeacherController {
         this.teacherService.deleteTeacher(id)
     }
 
-    @Get(':id')
-    async findTeacherByID(@Param('id', ParseIntPipe) id: number){
-        return await this.teacherService.findTeacherByID(id)
-    }
+    // @Get(':id')
+    // async findTeacherByID(@Param('id', ParseIntPipe) id: number){
+    //     return await this.teacherService.findTeacherByID(id)
+    // }
 
     @Get(':name')
     async findTeacherByName(@Param('name') name: string){
