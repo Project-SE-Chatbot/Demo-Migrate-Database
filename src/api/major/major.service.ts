@@ -114,8 +114,8 @@ export class MajorService {
     return this.majorRepository.save(major);
   }
 
-  deleteMajorID(id_major: number) {
-    return this.majorRepository.delete({ id_major });
+  deleteMajorID(course_code: string) {
+    return this.majorRepository.delete({ course_code });
   }
 
   deleteMajor() {

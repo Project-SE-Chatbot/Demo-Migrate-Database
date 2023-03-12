@@ -42,8 +42,8 @@ export class RegisterController {
     this.registerService.updateRegister(updateRegister.name, updateRegister);
   }
 
-  @Delete(':id')
-  deleteRegisterByID(@Param('name', ParseIntPipe) name: string) {
+  @Delete(':name')
+  deleteRegisterByID(@Param('name') name: string) {
     this.registerService.deleteRegister(name);
   }
 

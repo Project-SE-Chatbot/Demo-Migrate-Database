@@ -78,8 +78,8 @@ export class TeacherService {
     );
   }
 
-  deleteTeacher(id_teacher: number) {
-    return this.teacherRepository.delete({ id_teacher });
+  deleteTeacher(name: string) {
+    return this.teacherRepository.delete({ name });
   }
 
   findTeacherByID(id_teacher: number) {

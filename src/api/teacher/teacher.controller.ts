@@ -31,8 +31,8 @@ export class TeacherController {
     }
 
     @Delete(':name')
-    deleteTeacherByID(@Param('id', ParseIntPipe) id: number){
-        this.teacherService.deleteTeacher(id)
+    deleteTeacherByID(@Param('name') name: string){
+        this.teacherService.deleteTeacher(name)
     }
 
     // @Get(':id')

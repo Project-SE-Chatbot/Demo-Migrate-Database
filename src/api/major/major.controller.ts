@@ -37,9 +37,9 @@ export class MajorController {
         this.majorService.updateMajor(course_code, updateMajor)
     }
 
-    @Delete(':id')
-    deleteMajorByID(@Param('id', ParseIntPipe) id: number){
-        this.majorService.deleteMajorID(id)
+    @Delete(':course_code')
+    deleteMajorByID(@Param('course_code') course_code: string){
+        this.majorService.deleteMajorID(course_code)
     }
 
     @Delete()
