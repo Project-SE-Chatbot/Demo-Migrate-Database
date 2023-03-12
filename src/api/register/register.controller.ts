@@ -10,6 +10,7 @@ import {
 } from '@nestjs/common';
 import { DegreeDTO } from '../degree/DTO/degree.dto';
 import { findKeyDTO } from '../dto_global/findKey.dto';
+import { findRegisterDTO } from './DTO/findName.dto';
 import { RegisterDTO } from './DTO/register.dto';
 import { updateRegisterDTO } from './DTO/updateRegister.dto';
 import { RegisterService } from './register.service';
@@ -36,10 +37,9 @@ export class RegisterController {
 
   @Put(':name')
   editRegister(
-    @Param('name', ParseIntPipe) name: string,
     @Body() updateRegister: updateRegisterDTO,
   ) {
-    this.registerService.updateRegister(name, updateRegister);
+    this.registerService.updateRegister(updateRegister.name, updateRegister);
   }
 
   @Delete(':id')
@@ -47,8 +47,8 @@ export class RegisterController {
     this.registerService.deleteRegister(name);
   }
 
-  @Get(':name')
-  async findRegisterByID(@Param('name', ParseIntPipe) name: string){
-    return await this.registerService.findRegisterByName(name)
+  @Get('name')
+  async findRegisterByID(@Body() findReg: findRegisterDTO){
+    return await this.registerService.findRegisterByName(findReg.name)
   }
 }
