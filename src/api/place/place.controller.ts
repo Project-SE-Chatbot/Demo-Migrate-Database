@@ -40,9 +40,9 @@ export class PlaceController {
         this.placeService.deletePlace(id)
     }
 
-    @Get(':id')
-    async findPlaceByID(@Param('id', ParseIntPipe) id: number){
-        return await this.placeService.findPlaceByID(id)
+    @Get(':room')
+    async findPlaceByID(@Param('room') room: string){
+        return await this.placeService.findPlaceByRoom(room)
     }
 
 }
