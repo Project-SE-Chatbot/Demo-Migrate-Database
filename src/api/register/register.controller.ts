@@ -47,8 +47,8 @@ export class RegisterController {
     this.registerService.deleteRegister(name);
   }
 
-  @Get('name')
-  async findRegisterByID(@Body() findReg: findRegisterDTO){
-    return await this.registerService.findRegisterByName(findReg.name)
+  @Get(':name')
+  async findRegisterByID(@Param('name') name: string){
+    return await this.registerService.findRegisterByName(name)
   }
 }
