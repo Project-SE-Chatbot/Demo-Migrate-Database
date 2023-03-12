@@ -71,9 +71,9 @@ export class TeacherService {
     return this.teacherRepository.save(newTeacher);
   }
 
-  updateTeacher(id_teacher: number, updateTeacher: TeacherParam) {
+  updateTeacher(name: string, updateTeacher: TeacherParam) {
     return this.teacherRepository.update(
-      { id_teacher },
+      { name },
       { ...updateTeacher },
     );
   }

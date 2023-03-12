@@ -25,12 +25,12 @@ export class TeacherController {
         this.teacherService.createTeacher(createTeacher)
     }
 
-    @Put(':id')
-    editTeacher(@Param('id', ParseIntPipe) id: number, @Body() updateTeacher: updateTeacherDTO ){
-        this.teacherService.updateTeacher(id, updateTeacher)
+    @Put('name')
+    editTeacher(@Body() updateTeacher: updateTeacherDTO ){
+        this.teacherService.updateTeacher(updateTeacher.name, updateTeacher)
     }
 
-    @Delete(':id')
+    @Delete(':name')
     deleteTeacherByID(@Param('id', ParseIntPipe) id: number){
         this.teacherService.deleteTeacher(id)
     }
@@ -40,8 +40,8 @@ export class TeacherController {
         return await this.teacherService.findTeacherByID(id)
     }
 
-    @Get('name')
-    async findTeacherByName(@Body() findName: findNameDTO){
-        return await this.teacherService.findTeacherByName(findName.name)
+    @Get(':name')
+    async findTeacherByName(@Param('name') name: string){
+        return await this.teacherService.findTeacherByName(name)
     }
 }
