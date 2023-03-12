@@ -22,18 +22,18 @@ export class DegreeController {
         this.degreeService.createDegree(createDegreeDTO)
     }
 
-    @Put(':id')
-    editDegree(@Param('id', ParseIntPipe) id: number, @Body() updateDegree: updateDegreeDTO ){
-        this.degreeService.updateDegree(id, updateDegree)
+    @Put(':name')
+    editDegree(@Param('name') name: string, @Body() updateDegree: updateDegreeDTO ){
+        this.degreeService.updateDegree(name, updateDegree)
     }
 
-    @Delete(':id')
-    deleteDegreeByID(@Param('id', ParseIntPipe) id: number){
-        this.degreeService.deleteDegree(id)
+    @Delete(':name')
+    deleteDegreeByname(@Param('name') name: string){
+        this.degreeService.deleteDegree(name)
     }
 
-    // @Get(':id')
-    // async findDegreeByID(@Param('id', ParseIntPipe) id: number){
-    //     return await this.degreeService.findDegreeByID(id)
-    // }
+    @Get(':name')
+    async findDegreeByname(@Param('name') name: string){
+        return await this.degreeService.findDegreeByName(name)
+    }
 }

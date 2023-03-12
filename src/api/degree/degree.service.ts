@@ -57,12 +57,12 @@ export class DegreeService {
         return this.degreeRepository.save(newDegree)
     }
 
-    updateDegree(id_degree: number, updateDegree: DegreeParam){
-        return this.degreeRepository.update({id_degree}, {...updateDegree})
+    updateDegree(name: string, updateDegree: DegreeParam){
+        return this.degreeRepository.update({name}, {...updateDegree})
     }
 
-    deleteDegree(id_degree: number){
-        return this.degreeRepository.delete({id_degree})
+    deleteDegree(name: string){
+        return this.degreeRepository.delete({name})
     }
 
     findDegreeByName(name: string){
