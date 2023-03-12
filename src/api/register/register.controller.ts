@@ -35,7 +35,7 @@ export class RegisterController {
   }
 
 
-  @Put(':name')
+  @Put('name')
   editRegister(
     @Body() updateRegister: updateRegisterDTO,
   ) {
