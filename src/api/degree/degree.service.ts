@@ -62,6 +62,7 @@ export class DegreeService {
     }
 
     deleteDegree(name: string){
+        this.degreeKeyRepository.delete({key_1: name})
         return this.degreeRepository.delete({name})
     }
 

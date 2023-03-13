@@ -74,8 +74,9 @@ export class PlaceService {
     return this.placeRepository.update({ room }, { ...updatePlace });
   }
 
-  deletePlace(id_place: number) {
-    return this.placeRepository.delete({ id_place });
+  deletePlace(room: string) {
+    this.placeKeyRepository.delete({key_1: room})
+    return this.placeRepository.delete({ room });
   }
 
   findPlaceByID(id: number) {

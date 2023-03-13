@@ -81,6 +81,7 @@ export class FreeElectiveService {
   }
 
   deleteElective(course_code: number) {
+    this.free_electiveKeyRepository.delete({key_1: course_code.toString()})
     return this.free_electiveRepository.delete({ course_code });
   }
 

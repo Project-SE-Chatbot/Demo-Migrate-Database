@@ -79,6 +79,7 @@ export class TeacherService {
   }
 
   deleteTeacher(name: string) {
+    this.teacherKeyRepository.delete({key_1: name})
     return this.teacherRepository.delete({ name });
   }
 

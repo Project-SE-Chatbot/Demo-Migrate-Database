@@ -115,6 +115,7 @@ export class MajorService {
   }
 
   deleteMajorID(course_code: string) {
+    this.majorKeyRepository.delete({key_1: course_code})
     return this.majorRepository.delete({ course_code });
   }
 

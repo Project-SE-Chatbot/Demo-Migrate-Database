@@ -67,6 +67,7 @@ export class RegisterService {
   }
 
   deleteRegister(name: string) {
+    this.registerKeyRepository.delete({key_1: name})
     return this.registerRepository.delete({ name });
   }
 

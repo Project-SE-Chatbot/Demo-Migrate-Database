@@ -35,9 +35,9 @@ export class PlaceController {
         this.placeService.updatePlace(updatePlace.room, updatePlace)
     }
 
-    @Delete(':id')
-    deletePlaceByID(@Param('id', ParseIntPipe) id: number){
-        this.placeService.deletePlace(id)
+    @Delete(':room')
+    deletePlaceByID(@Param('room') room: string){
+        this.placeService.deletePlace(room)
     }
 
     @Get(':room')
