@@ -29,16 +29,16 @@ export class AdminService {
         return this.adminRepository.save(newAdmin)
     }
 
-    updateAdmin(id_admin: number, updateAdmin: AdminParam){
-        return this.adminRepository.update({id_admin}, {...updateAdmin})
+    updateAdmin(name: string, updateAdmin: AdminParam){
+        return this.adminRepository.update({name}, {...updateAdmin})
     }
 
-    deleteAdmin(id_admin: number){
-        return this.adminRepository.delete({id_admin})
+    deleteAdmin(name: string){
+        return this.adminRepository.delete({name})
     }
 
-    findAdminByID(id_admin: number){
-        return this.adminRepository.findOne({where:{id_admin}})
+    findAdminByName(name: string){
+        return this.adminRepository.findOne({where:{name}})
     }
 
 

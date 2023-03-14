@@ -22,19 +22,19 @@ export class AdminController {
     this.adminService.createAdmin(createAdmin);
   }
 
-  @Put(':id')
-  editAdmin(@Param('id', ParseIntPipe) id: number, @Body() updateAdminDTO: updateAdminDTO) {
-    this.adminService.updateAdmin(id, updateAdminDTO)
+  @Put(':name')
+  editAdmin(@Param('name') name: string, @Body() updateAdminDTO: updateAdminDTO) {
+    this.adminService.updateAdmin(name, updateAdminDTO)
   }
 
-  @Delete(':id')
-  deleteAdminByID(@Param('id', ParseIntPipe) id: number ) {
-    this.adminService.deleteAdmin(id)
+  @Delete(':name')
+  deleteAdminByName(@Param('name') name: string ) {
+    this.adminService.deleteAdmin(name)
   }
 
-  @Get(':id')
-  async findAdminByID(@Param('id', ParseIntPipe) id: number){
-    return await this.adminService.findAdminByID(id)
+  @Get(':name')
+  async findAdminByName(@Param('name') name: string){
+    return await this.adminService.findAdminByName(name)
   }
 
 }
